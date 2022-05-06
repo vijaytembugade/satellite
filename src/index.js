@@ -2,14 +2,17 @@ import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { AuthProvider } from './contexts';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <StrictMode>
     <ChakraProvider>
-      <ColorModeScript />
-      <App />
+      <AuthProvider>
+        <ColorModeScript />
+        <App />
+      </AuthProvider>
     </ChakraProvider>
   </StrictMode>,
   document.getElementById('root')
