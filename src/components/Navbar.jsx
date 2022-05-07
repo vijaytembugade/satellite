@@ -78,7 +78,9 @@ export function Navbar() {
                 />
               </MenuButton>
               <MenuList>
-                <MenuItem>Profile</MenuItem>
+                <MenuItem>
+                  <NavLink to="/profile">Profile</NavLink>
+                </MenuItem>
                 <MenuDivider />
                 <MenuItem>Logout</MenuItem>
               </MenuList>
