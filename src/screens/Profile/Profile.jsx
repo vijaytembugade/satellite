@@ -15,7 +15,7 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { ProfileDetails } from '../../components';
+import { ProfileDetails, ReferalDetails } from '../../components';
 import { useAuth } from '../../contexts';
 
 export const Profile = () => {
@@ -141,7 +141,7 @@ export const Profile = () => {
             <ProfileDetails />
           </TabPanel>
           <TabPanel>
-            <p>two!</p>
+            <ReferalDetails />
           </TabPanel>
         </TabPanels>
       </Tabs>
