@@ -5,14 +5,17 @@ import App from './App';
 import { AuthProvider } from './contexts';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <StrictMode>
     <ChakraProvider>
-      <AuthProvider>
-        <ColorModeScript />
-        <App />
-      </AuthProvider>
+      <BrowserRouter>
+        <AuthProvider>
+          <ColorModeScript />
+          <App />
+        </AuthProvider>
+      </BrowserRouter>
     </ChakraProvider>
   </StrictMode>,
   document.getElementById('root')
