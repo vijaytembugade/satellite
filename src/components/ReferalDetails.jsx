@@ -1,36 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import {
-  Button,
-  Box,
-  Flex,
-  ListItem,
-  OrderedList,
-  Text,
-} from '@chakra-ui/react';
+import { Button, Box, Flex, Text } from '@chakra-ui/react';
 
 const ReferalDetails = () => {
-  const jobs = new Array(
-    1,
-    2,
-    3,
-    4,
-    5,
-    7,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    2
-  );
+  const jobs = new Array(1, 2, 3, 4, 5, 7, 1);
   return (
     <div>
       <Flex
@@ -47,7 +20,6 @@ const ReferalDetails = () => {
           </NavLink>
         </Box>
         <Box>
-          {/* <OrderedList> */}
           <Flex
             p={'50'}
             alignItems="flex-start"
@@ -73,14 +45,18 @@ const ReferalDetails = () => {
                     officia sunt alias quo sequi dolore saepe hic in a omnis
                     neque harum, tempora nesciunt repellendus!
                   </Text>
-
-                  <Button colorScheme="blue">Delete Job</Button>
-                  <Button colorScheme="blue">Edit Job</Button>
+                  <Flex
+                    flexDirection={{ base: 'column', md: 'row' }}
+                    gap="4"
+                    mt="4"
+                  >
+                    <Button colorScheme="blue">Delete Job</Button>
+                    <Button colorScheme="blue">Edit Job</Button>
+                  </Flex>
                 </Box>
               );
             })}
           </Flex>
-          {/* </OrderedList> */}
         </Box>
       </Flex>
     </div>
