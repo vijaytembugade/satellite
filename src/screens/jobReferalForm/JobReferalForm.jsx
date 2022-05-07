@@ -12,6 +12,7 @@ import {
   Select,
 } from '@chakra-ui/react';
 import { SkillsCreator } from '../../components';
+import { NavLink } from 'react-router-dom';
 
 function JobReferalForm() {
   return (
@@ -54,9 +55,11 @@ function JobReferalForm() {
         </RadioGroup>
         <SkillsCreator />
         <Flex justifyContent="space-between" p="1" mt="2">
-          <Button colorScheme="teal" type="submit">
-            Cancel
-          </Button>
+          <NavLink to="/profile">
+            <Button colorScheme="teal" type="submit">
+              Cancel
+            </Button>
+          </NavLink>
           <Button colorScheme="teal" type="submit">
             Submit
           </Button>
