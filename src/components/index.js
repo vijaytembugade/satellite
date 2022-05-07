@@ -1,1 +1,1 @@
-export { JobForm } from './JobForm';
+export { SkillsCreator } from './SkillsCreator';
