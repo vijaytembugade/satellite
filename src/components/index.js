@@ -4,3 +4,5 @@ export { Card } from './Card';
 export { SkillsCreator } from './SkillsCreator';
 export { ReferalDetails } from './ReferalDetails';
 export { ReferalAccordian } from './ReferalAccordian';
+export { UserDetails } from './UserDetails';
+
