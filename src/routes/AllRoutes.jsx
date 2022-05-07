@@ -8,7 +8,7 @@ import {
   Role,
   Homepage,
   JobReferalForm,
-
+  Profile,
 } from '../screens';
 
 function AllRoutes() {
