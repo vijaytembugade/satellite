@@ -15,14 +15,18 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { ProfileDetails } from '../../components';
+import { useState } from 'react';
+import { ProfileDetails, UserDetails } from '../../components';
 import { useAuth } from '../../contexts';
 
 export const Profile = () => {
   const {
     state: { user },
   } = useAuth();
-  console.log(user);
+
+  const cancelHandler = () => setDetails(false);
+  const [isDetails, setDetails] = useState(false);
+  const [userDetailsPresent, setUserDetails] = useState(true);
   return (
     <div>
       <Center py={6}>
@@ -137,8 +141,15 @@ export const Profile = () => {
           <Tab>Post a Referral</Tab>
         </TabList>
         <TabPanels>
+          {/* TAB 1 */}
           <TabPanel>
-            <ProfileDetails />
+            {userDetailsPresent && <UserDetails />}
+            {!isDetails && (
+              <Button colorScheme="blue" onClick={() => setDetails(true)}>
+                Add Details +
+              </Button>
+            )}
+            {isDetails && <ProfileDetails close={cancelHandler} />}
           </TabPanel>
           <TabPanel>
             <p>two!</p>
