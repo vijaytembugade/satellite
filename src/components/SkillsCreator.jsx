@@ -36,8 +36,4 @@ function SkillsCreator() {
   );
 }
 
-// LabelCreator.defaultProps = {
-//   tags: [],
-// };
-
 export { SkillsCreator };
