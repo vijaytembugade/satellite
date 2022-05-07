@@ -1,9 +1,11 @@
 import { Badge, Box, Button, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
+import { useJobContext } from '../../contexts';
 
 const jobs = [1, 2, 3, 4, 5];
 
 const JobListing = () => {
+  const { jobsData } = useJobContext();
   return (
     <div>
       <Text textAlign={'center'} fontSize={'3xl'} fontWeight="bold" pt={6}>
@@ -16,35 +18,33 @@ const JobListing = () => {
         direction="column"
         gap={4}
       >
-        {jobs.map(item => {
+        {jobsData.map(item => {
           return (
             <Box
+              key={item.id}
               width={'full'}
               bg="gray.100"
-              key={item}
               borderBottom={'1px'}
               py={{ base: 6, md: 10 }}
               px={{ base: 6, md: 16 }}
             >
-              <Text fontWeight={'bold'}>Sowftware Engineer</Text>
+              <Text fontWeight={'bold'}>{item.data.job_role}</Text>
               <Text>
-                Organisation : <strong>Mirraw</strong>
+                Organisation : <strong>{item.data.company_name}</strong>
               </Text>
               <Text>Job Description:</Text>
-              <Text noOfLines={3}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                voluptatibus totam quibusdam, delectus veritatis officia sunt
-                alias quo sequi dolore saepe hic in a omnis neque harum, tempora
-                nesciunt repellendus!
-              </Text>
+              <Text noOfLines={3}>{item.data.job_description}</Text>
 
               <Text>
                 <Flex width={'100%'} gap={2} wrap={'wrap'} alignItems="center">
                   <Text fontWeight={'bold'}>Skills :</Text>
-                  <Badge colorScheme="blue">Javascript</Badge>
-                  <Badge colorScheme="blue">React</Badge>
-                  <Badge colorScheme="blue">NodeJS</Badge>
-                  <Badge colorScheme="blue">Ruby On Rails</Badge>
+                  {item.data.skills.map(skill => {
+                    return (
+                      <Badge colorScheme="blue" key={skill}>
+                        {skill}
+                      </Badge>
+                    );
+                  })}
                 </Flex>
               </Text>
 
