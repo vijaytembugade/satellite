@@ -21,6 +21,7 @@ export function Card() {
         boxShadow={'2xl'}
         rounded={'md'}
         overflow={'hidden'}
+        maxH={'600px'}
       >
         <Stack
           textAlign={'center'}
@@ -37,34 +38,33 @@ export function Card() {
             color={'green.500'}
             rounded={'full'}
           >
-            Hobby
+            Software Engineer
           </Text>
           <Stack direction={'row'} align={'center'} justify={'center'}>
-            <Text fontSize={'3xl'}>$</Text>
-            <Text fontSize={'6xl'} fontWeight={800}>
-              79
+            <Text fontSize={'3xl'} fontWeight={800}>
+              Mirraw
             </Text>
-            <Text color={'gray.500'}>/month</Text>
           </Stack>
         </Stack>
 
-        <Box bg={useColorModeValue('gray.50', 'gray.900')} px={6} py={10}>
+        <Box
+          bg={useColorModeValue('gray.50', 'gray.900')}
+          px={6}
+          py={10}
+          width="60"
+        >
           <List spacing={3}>
             <ListItem>
               <ListIcon as={CheckIcon} color="green.400" />
-              5.000 page views
+              Remote
             </ListItem>
             <ListItem>
               <ListIcon as={CheckIcon} color="green.400" />
-              50 automation executions
+              Experience : 2 + years
             </ListItem>
             <ListItem>
               <ListIcon as={CheckIcon} color="green.400" />
-              50 identified users
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckIcon} color="green.400" />
-              All features
+              Skills : Javascript, react, ruby on rails
             </ListItem>
           </List>
 
@@ -82,7 +82,7 @@ export function Card() {
               bg: 'blue.500',
             }}
           >
-            Start your trial
+            Contact for Referrals
           </Button>
         </Box>
       </Box>
