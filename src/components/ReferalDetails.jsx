@@ -2,29 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Box, Flex, Text, Badge } from '@chakra-ui/react';
 import { ReferalAccordian } from './ReferalAccordian';
+const jobs = [1, 2, 3, 4, 5];
 
 const ReferalDetails = () => {
-  const jobs = new Array(
-    1,
-    2,
-    3,
-    4,
-    5,
-    7,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    2
-  );
   return (
     <div>
       <Flex

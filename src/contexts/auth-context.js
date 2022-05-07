@@ -2,7 +2,6 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { auth, db } from '../firebase/config';
-import useCollection from '../hooks/useCollection';
 
 const AuthContext = createContext();
 
@@ -55,8 +54,6 @@ const AuthProvider = ({ children }) => {
     return () => unsub();
   }, []);
 
-  console.log(state);
-
   useEffect(() => {
     if (isLoggedIn) {
       const collectionRef = collection(db, 'Users');
@@ -75,7 +72,6 @@ const AuthProvider = ({ children }) => {
     }
   }, [isLoggedIn, user]);
 
-  console.log(state);
   return (
     <AuthContext.Provider value={{ state, dispatch }}>
       {children}

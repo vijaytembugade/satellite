@@ -1,9 +1,8 @@
-import { useEffect, useReducer } from 'react';
+import { useReducer } from 'react';
 import { useAuth } from '../contexts';
 import {
   Box,
   Button,
-  DrawerOverlay,
   Flex,
   FormControl,
   FormLabel,
@@ -16,7 +15,6 @@ import {
   addDoc,
   collection,
   doc,
-  getDocs,
   onSnapshot,
   updateDoc,
 } from 'firebase/firestore';
@@ -43,14 +41,14 @@ export const ProfileDetails = ({ close }) => {
   } = useAuth();
 
   const initialState = {
-    uid: user.uid,
+    uid: user?.uid || '',
     about: profileData?.about || '',
     email: user.email,
     github: profileData?.github || '',
     linkedIn: profileData?.linkedIn || '',
     peerlist: profileData?.peerlist || '',
     twitter: profileData?.twitter || '',
-    appliedJobs: profileData?.appliedJobs.map(item => item),
+    appliedJobs: profileData?.appliedJobs || [],
     project: {
       first: profileData?.project?.first || '',
       second: profileData?.project?.second || '',
@@ -227,8 +225,8 @@ export const ProfileDetails = ({ close }) => {
         <Box>
           <Creatable
             defaultValue={
-              state.skills.length > 0
-                ? state?.skills.map(value => ({
+              state?.skills?.length > 0
+                ? state?.skills?.map(value => ({
                     value: value,
                     label: value,
                   }))

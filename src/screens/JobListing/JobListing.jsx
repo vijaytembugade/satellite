@@ -1,7 +1,7 @@
-import { Badge, Box, Button, Flex, Stack, Text } from '@chakra-ui/react';
+import { Badge, Box, Button, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
 
-const jobs = new Array(1, 2, 3, 4, 5, 7, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2);
+const jobs = [1, 2, 3, 4, 5];
 
 const JobListing = () => {
   return (

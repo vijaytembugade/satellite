@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
 const useCollection = (collection_name, uid) => {
   const [documents, setDocuments] = useState([]);
-
-  console.log(uid);
 
   useEffect(() => {
     const collectionRef = collection(db, collection_name);

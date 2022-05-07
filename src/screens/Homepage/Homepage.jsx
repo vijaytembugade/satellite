@@ -2,7 +2,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import React from 'react';
 import { Card, FeaturesHomepage, Footer } from '../../components';
 
-const card = new Array(1, 2, 3, 4, 5, 6);
+const card = [1, 2, 3, 4, 5];
 
 const Homepage = () => {
   return (
