@@ -1,9 +1,30 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button, Box, Flex, Text } from '@chakra-ui/react';
+import { Button, Box, Flex, Text, Badge } from '@chakra-ui/react';
+import { ReferalAccordian } from './ReferalAccordian';
 
 const ReferalDetails = () => {
-  const jobs = new Array(1, 2, 3, 4, 5, 7, 1);
+  const jobs = new Array(
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2
+  );
   return (
     <div>
       <Flex
@@ -21,7 +42,7 @@ const ReferalDetails = () => {
         </Box>
         <Box>
           <Flex
-            p={'50'}
+            p={{ base: '6', md: '50' }}
             alignItems="flex-start"
             justifyContent="flex-start"
             direction="column"
@@ -34,7 +55,8 @@ const ReferalDetails = () => {
                   bg="gray.100"
                   key={item}
                   borderBottom={'1px'}
-                  p={14}
+                  py={{ base: '6', md: '10' }}
+                  px={{ base: '6', md: '16' }}
                 >
                   <Text fontSize="3xl">Software Engineer</Text>
                   <Text fontWeight={'bold'}>Company Name</Text>
@@ -45,6 +67,21 @@ const ReferalDetails = () => {
                     officia sunt alias quo sequi dolore saepe hic in a omnis
                     neque harum, tempora nesciunt repellendus!
                   </Text>
+                  <Text>
+                    <Flex
+                      width={'100%'}
+                      gap={2}
+                      wrap={'wrap'}
+                      alignItems="center"
+                    >
+                      <Text fontWeight={'bold'}>Skills :</Text>
+                      <Badge colorScheme="blue">Javascript</Badge>
+                      <Badge colorScheme="blue">React</Badge>
+                      <Badge colorScheme="blue">NodeJS</Badge>
+                      <Badge colorScheme="blue">Ruby On Rails</Badge>
+                    </Flex>
+                  </Text>
+                  <ReferalAccordian />
                   <Flex
                     flexDirection={{ base: 'column', md: 'row' }}
                     gap="4"
