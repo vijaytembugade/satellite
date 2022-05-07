@@ -17,6 +17,8 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { NavLink } from 'react-router-dom';
+import { useAuth } from '../contexts';
+import useLogout from '../hooks/useLogout';
 
 const Links = ['home', 'jobs', 'Post-a-Job'];
 
@@ -37,6 +39,11 @@ const NavLinkMain = ({ children }) => (
 
 export function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    state: { user },
+  } = useAuth();
+
+  const { logout } = useLogout();
 
   return (
     <>
@@ -72,9 +79,7 @@ export function Navbar() {
               >
                 <Avatar
                   size={'sm'}
-                  src={
-                    'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                  }
+                  src={user?.photo}
                 />
               </MenuButton>
               <MenuList>
@@ -82,7 +87,7 @@ export function Navbar() {
                   <NavLink to="/profile">Profile</NavLink>
                 </MenuItem>
                 <MenuDivider />
-                <MenuItem>Logout</MenuItem>
+                <MenuItem onClick={logout}>Logout</MenuItem>
               </MenuList>
             </Menu>
           </Flex>
