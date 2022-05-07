@@ -1,6 +1,5 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import { createContext, useContext, useEffect, useReducer } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase/config';
 
 const AuthContext = createContext();
@@ -10,7 +9,6 @@ const AuthProvider = ({ children }) => {
     user: null,
     isLoggedIn: false,
   };
-  // const navigate  = useNavigate();
   const authReducer = (state, action) => {
     switch (action.type) {
       case 'LOGIN': {
@@ -34,14 +32,13 @@ const AuthProvider = ({ children }) => {
             email: user?.email,
             name: user?.displayName,
             uid: user?.uid,
-            photo:user?.photoURL,
+            photo: user?.photoURL,
           },
         });
-        console.log(user)
+        console.log(user);
         // navigate('/role');
       } else {
         dispatch({ type: 'LOGOUT' });
-        
       }
     });
 

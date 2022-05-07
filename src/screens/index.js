@@ -1,6 +1,8 @@
 export { UserProfile } from './userprofile/UserProfile';
 export { Home } from './home/Home';
-export { JobListings } from './joblistings/JobListings';
+export { JobReferalForm } from './jobReferalForm/JobReferalForm';
 export { Auth } from './Auth/Auth';
 export { Role } from './Role/Role';
+export { Homepage } from './Homepage/Homepage';
 export {Profile} from "./Profile/Profile"
+
