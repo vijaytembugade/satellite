@@ -13,18 +13,24 @@ export const Role = () => {
         justifyContent="center"
         gap="3"
         mt="10rem"
+        textAlign="center"
       >
         <Text fontSize="5xl">Welcome to Satellite!!🛰</Text>
         <Text fontSize="3xl"> What you want to go ahead with ?</Text>
-        <Flex alignItems="center" justifyContent="center" gap="2">
+        <Flex
+          alignItems="center"
+          justifyContent="center"
+          gap="2"
+          direction={{ base: 'column', md: 'row' }}
+        >
           <Button
             colorScheme="blue"
             variant="outline"
             p="8"
             h="30"
-            fontSize="3xl"
+            fontSize="2xl"
           >
-            Do you want to hire people ?
+            Are you a First time Job Seaker ?
           </Button>
           <Text fontSize="2xl" p="6">
             OR
@@ -34,9 +40,9 @@ export const Role = () => {
             variant="outline"
             p="8"
             h="30"
-            fontSize="3xl"
+            fontSize="2xl"
           >
-            Are you looking for a job ?
+            Are you already a Working Professional ?
           </Button>
         </Flex>
       </Flex>
