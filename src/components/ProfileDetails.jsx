@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 
-export const ProfileDetails = () => {
+export const ProfileDetails = ({close}) => {
   return (
     <Flex justify="center" alignItems="center" direction="column" gap="4">
       <FormControl width={{ base: '100%', md: '50%', xl: '25%' }}>
@@ -44,7 +44,7 @@ export const ProfileDetails = () => {
           <Input placeholder="Enter Third Link" isRequired />
         </FormLabel>
         <Flex gap="10" mt="1rem">
-          <Button colorScheme="teal" variant="outline">
+          <Button colorScheme="teal" variant="outline" onClick={close}>
             Cancel
           </Button>
           <Button colorScheme="blue">Submit</Button>
