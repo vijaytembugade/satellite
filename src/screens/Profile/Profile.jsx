@@ -40,8 +40,8 @@ export const Profile = () => {
           boxShadow={'2xl'}
           padding={4}
         >
-          <Flex flex={1} bg="blue.200">
-            <Image objectFit="cover" boxSize="100%" src={user?.photo} />
+          <Flex flex={1} alignSelf="center">
+            <Image objectFit="cover" boxSize="80%" borderRadius="100%" src={user?.photo} />
           </Flex>
           <Stack
             flex={1}
