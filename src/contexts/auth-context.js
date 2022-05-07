@@ -10,7 +10,7 @@ const AuthProvider = ({ children }) => {
     user: null,
     isLoggedIn: false,
   };
-  const navigate  = useNavigate();
+  const navigate = useNavigate();
   const authReducer = (state, action) => {
     switch (action.type) {
       case 'LOGIN': {
@@ -36,10 +36,13 @@ const AuthProvider = ({ children }) => {
             uid: user?.uid,
           },
         });
-        navigate('/role');
+        {
+          console.log(user);
+        }
+        // navigate('/');
       } else {
         dispatch({ type: 'LOGOUT' });
-        navigate('/auth');
+        // navigate('/');
       }
     });
 

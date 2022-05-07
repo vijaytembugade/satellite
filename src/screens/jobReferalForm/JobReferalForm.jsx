@@ -9,10 +9,11 @@ import {
   Radio,
   Flex,
   Button,
+  Select,
 } from '@chakra-ui/react';
-import { SkillsCreator } from './SkillsCreator';
+import { SkillsCreator } from '../../components';
 
-function JobForm() {
+function JobReferalForm() {
   return (
     <Flex
       flexDir="column"
@@ -22,13 +23,20 @@ function JobForm() {
       h="calc(100vh)"
     >
       <FormControl
+        isRequired
         width={{ base: '100%', md: '50%', xl: '25%' }}
         boxShadow="base"
         p="6"
       >
-        <FormLabel htmlFor="role">Enter the Role you are looking for</FormLabel>
-        <Input id="role" type="text" />
-        <FormLabel htmlFor="companyName" mt="2">
+        <FormLabel htmlFor="role">
+          Select the Role you are looking for
+        </FormLabel>
+        <Select id="role" placeholder="Select Role" required>
+          <option>Full-Stack Web Developer</option>
+          <option>Front-End Developer</option>
+          <option>Back-End Developer</option>
+        </Select>
+        <FormLabel htmlFor="companyName" mt="2" required>
           Please enter your Company Name
         </FormLabel>
         <Input id="companyName" type="text" />
@@ -58,4 +66,4 @@ function JobForm() {
   );
 }
 
-export { JobForm };
+export { JobReferalForm };

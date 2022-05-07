@@ -7,6 +7,7 @@ import {
   Auth,
   Role,
   Homepage,
+  JobReferalForm,
 } from '../screens';
 
 function AllRoutes() {
@@ -16,7 +17,7 @@ function AllRoutes() {
         <Route path="/" element={<Homepage />} />
         <Route path="/home" element={<Homepage />} />
         <Route path="/userProfile" element={<UserProfile />} />
-        <Route path="/jobListings" element={<JobListings />} />
+        <Route path="/referalForm" element={<JobReferalForm />} />
         <Route path="/auth" element={<Auth />} />
         {/* <Route path="/role" element={<Role />} /> */}
       </Routes>
