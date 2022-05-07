@@ -3,17 +3,20 @@ import { Routes, Route } from 'react-router-dom';
 import {
   Home,
   UserProfile,
-  JobReferalForm,
+  JobListings,
   Auth,
   Role,
-  Profile,
+  Homepage,
+  JobReferalForm,
+
 } from '../screens';
 
 function AllRoutes() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Homepage />} />
+        <Route path="/home" element={<Homepage />} />
         <Route path="/userProfile" element={<UserProfile />} />
         <Route path="/referalForm" element={<JobReferalForm />} />
         <Route path="/auth" element={<Auth />} />
