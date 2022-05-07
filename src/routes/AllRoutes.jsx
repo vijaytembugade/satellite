@@ -1,9 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import {
-  Home,
   UserProfile,
-  JobListings,
+  JobListing,
   Auth,
   Role,
   Homepage,
@@ -19,6 +18,7 @@ function AllRoutes() {
         <Route path="/home" element={<Homepage />} />
         <Route path="/userProfile" element={<UserProfile />} />
         <Route path="/referalForm" element={<JobReferalForm />} />
+        <Route path="/jobs" element={<JobListing />} />
         <Route path="/auth" element={<Auth />} />
         {/* Not needed Remove Later */}
         <Route path="/role" element={<Role />} />
