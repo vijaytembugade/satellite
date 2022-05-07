@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Home, UserProfile, JobListings, Auth } from '../screens';
+import { Home, UserProfile, JobListings, Auth, Role } from '../screens';
 
 function AllRoutes() {
   return (
@@ -10,6 +10,7 @@ function AllRoutes() {
         <Route path="/userProfile" element={<UserProfile />} />
         <Route path="/jobListings" element={<JobListings />} />
         <Route path="/auth" element={<Auth />} />
+        <Route path="/role" element={<Role />} />
       </Routes>
     </div>
   );
