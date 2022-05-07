@@ -8,6 +8,7 @@ import {
   Role,
   Homepage,
   JobReferalForm,
+
 } from '../screens';
 
 function AllRoutes() {
@@ -19,7 +20,9 @@ function AllRoutes() {
         <Route path="/userProfile" element={<UserProfile />} />
         <Route path="/referalForm" element={<JobReferalForm />} />
         <Route path="/auth" element={<Auth />} />
-        {/* <Route path="/role" element={<Role />} /> */}
+        {/* Not needed Remove Later */}
+        <Route path="/role" element={<Role />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );
