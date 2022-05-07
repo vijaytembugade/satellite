@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useReducer } from 'react';
+import { useAuth } from '../../contexts';
 import {
   FormControl,
   FormLabel,
@@ -15,6 +16,53 @@ import { SkillsCreator } from '../../components';
 import { NavLink } from 'react-router-dom';
 
 function JobReferalForm() {
+  const initialiState = {
+    company_name: '',
+    isRemote: false,
+    job_description: '',
+    job_role: '',
+    location: '',
+    uid: '',
+    skills: [],
+  };
+
+  const {
+    state: {
+      user: { uid },
+    },
+  } = useAuth();
+
+  const jobReducer = (state, action) => {
+    switch (action.type) {
+      case 'SET_COMPANY_NAME': {
+        return { ...state, company_name: action.payload };
+      }
+      case 'SET_IS_REMOTE': {
+        return { ...state, isRemote: action.payload };
+      }
+      case 'SET_JOB_DESCRIPTION': {
+        return {
+          ...state,
+          job_description: action.payload,
+        };
+      }
+      case 'SET_LOACTION': {
+        return {
+          ...state,
+          location: action.payload,
+        };
+      }
+      case 'SET_UID': {
+        return {
+          ...state,
+          uid: action.payload,
+        };
+      }
+      default:
+        return state;
+    }
+  };
+  const [jobState, jobDispatch] = useReducer(jobReducer, initialiState);
   return (
     <Flex
       flexDir="column"
