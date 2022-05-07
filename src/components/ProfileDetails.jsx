@@ -14,6 +14,10 @@ export const ProfileDetails = ({close}) => {
       <FormControl width={{ base: '100%', md: '50%', xl: '25%' }}>
         <Text fontSize="2xl">Enter Social Accounts</Text>
         <FormLabel>
+          <Text fontSize="1xl">About</Text>
+          <Input placeholder="tell us more about yourself" isRequired />
+        </FormLabel>
+        <FormLabel>
           <Text fontSize="1xl">Github</Text>
           <Input placeholder="Enter Github Link" isRequired />
         </FormLabel>
