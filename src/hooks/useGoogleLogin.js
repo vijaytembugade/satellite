@@ -13,7 +13,12 @@ const useGoogleLogin = () => {
 
       dispatch({
         type: 'LOGIN',
-        payload: { email: user.email, name: user.displayName, uid: user.uid },
+        payload: {
+          email: user.email,
+          name: user.displayName,
+          uid: user.uid,
+          photo: user.photoURL,
+        },
       });
     } catch (error) {
       console.log(error);

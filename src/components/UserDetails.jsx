@@ -8,33 +8,40 @@ import {
   StatLabel,
   Box,
   Stat,
+  Stack,
 } from '@chakra-ui/react';
 import React from 'react';
 
 export const UserDetails = () => {
   return (
-    <div>
-      <Text fontSize="2xl" fontWeight="bold">
-        Full Name :{' '}
-      </Text>
-      <Text fontSize="2xl">Rushikesh Prashant Tarapure</Text>
-      <Text fontSize="2xl" fontWeight="bold">
-        Current Company :
-      </Text>{' '}
-      <Text fontSize="2xl">Infosys</Text>
-      <Text fontSize="2xl" fontWeight="bold">
-        About Myself :
-      </Text>{' '}
-      <Text fontSize="2xl">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia nisi
-        consectetur optio doloribus accusantium aliquid vel placeat commodi a,
-        voluptate autem pariatur sapiente perferendis nesciunt blanditiis.
-        Consequatur perferendis vitae adipisci?{' '}
-      </Text>
-      <Text fontSize="2xl" fontWeight="bold">
-        Skills :
-      </Text>
-      <Flex gap="6">
+    <Box p={{ base: '2', md: '16' }}>
+      <Stack my="4" direction={'row'}>
+        <Text fontSize="xl" fontWeight="bold">
+          Full Name :
+        </Text>
+        <Text fontSize="xl">Rushikesh Prashant Tarapure</Text>
+      </Stack>
+      <Stack my="4" direction={'row'}>
+        <Text fontSize="xl" fontWeight="bold">
+          Current Company :
+        </Text>
+        <Text fontSize="xl">Infosys</Text>
+      </Stack>
+      <Box my="4">
+        <Text fontSize="xl" fontWeight="bold">
+          About Myself :
+        </Text>{' '}
+        <Text fontSize="xl">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia nisi
+          consectetur optio doloribus accusantium aliquid vel placeat commodi a,
+          voluptate autem pariatur sapiente perferendis nesciunt blanditiis.
+          Consequatur perferendis vitae adipisci?{' '}
+        </Text>
+      </Box>
+      <Flex gap="4" wrap={'wrap'}>
+        <Text fontSize="xl" fontWeight="bold">
+          Skills :
+        </Text>
         <Badge fontSize="0.8em" p="1.5">
           React
         </Badge>
@@ -51,7 +58,7 @@ export const UserDetails = () => {
       {/*  */}
       <chakra.h1
         textAlign={'center'}
-        fontSize={'4xl'}
+        fontSize={{ base: '2xl', md: '3xl' }}
         py={10}
         fontWeight={'bold'}
       >
@@ -151,6 +158,6 @@ export const UserDetails = () => {
           <i class="fa-brands fa-twitter"></i>
         </Text>
       </Flex>
-    </div>
+    </Box>
   );
 };

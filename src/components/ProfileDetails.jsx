@@ -8,10 +8,10 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 
-export const ProfileDetails = ({close}) => {
+export const ProfileDetails = ({ close }) => {
   return (
-    <Flex justify="center" alignItems="center" direction="column" gap="4">
-      <FormControl width={{ base: '100%', md: '50%', xl: '25%' }}>
+    <Flex justify="center" alignItems="center" direction="column" gap="4" p="6">
+      <FormControl width={{ base: '100%', md: '50%', xl: '40%' }}>
         <Text fontSize="2xl">Enter Social Accounts</Text>
         <FormLabel>
           <Text fontSize="1xl">About</Text>

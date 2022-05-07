@@ -149,9 +149,11 @@ export const Profile = () => {
           {/* TAB 1 */}
           <TabPanel>
             {!isDetails && (
-              <Button colorScheme="blue" onClick={() => setDetails(true)}>
-                Add Details +
-              </Button>
+              <Flex alignItems={'center'} justifyContent={'center'}>
+                <Button colorScheme="blue" onClick={() => setDetails(true)}>
+                  Add Details +
+                </Button>
+              </Flex>
             )}
             {!isDetails && <UserDetails />}
             {isDetails && <ProfileDetails close={cancelHandler} />}

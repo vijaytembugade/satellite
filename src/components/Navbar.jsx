@@ -16,11 +16,11 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link as RouterLink } from 'react-router-dom';
 import { useAuth } from '../contexts';
 import useLogout from '../hooks/useLogout';
 
-const Links = ['home', 'jobs', 'Post-a-Job'];
+const Links = ['home', 'jobs', 'referalForm'];
 
 const NavLinkMain = ({ children }) => (
   <Link
@@ -33,14 +33,14 @@ const NavLinkMain = ({ children }) => (
     }}
     to={`/${children}`}
   >
-    <NavLink to={`/${children}`}>{children}</NavLink>
+    <NavLink to={`/${children}`}>{`${children}`.toUpperCase()}</NavLink>
   </Link>
 );
 
 export function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
-    state: { user },
+    state: { user, isLoggedIn },
   } = useAuth();
 
   const { logout } = useLogout();
@@ -68,29 +68,41 @@ export function Navbar() {
               ))}
             </HStack>
           </HStack>
-          <Flex alignItems={'center'}>
-            <Menu>
-              <MenuButton
-                as={Button}
-                rounded={'full'}
-                variant={'link'}
-                cursor={'pointer'}
-                minW={0}
+          {isLoggedIn && (
+            <Flex alignItems={'center'}>
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  rounded={'full'}
+                  variant={'link'}
+                  cursor={'pointer'}
+                  minW={0}
+                >
+                  <Avatar size={'sm'} src={user?.photo} />
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>
+                    <NavLink to="/profile">Profile</NavLink>
+                  </MenuItem>
+                  <MenuDivider />
+                  <MenuItem onClick={logout}>Logout</MenuItem>
+                </MenuList>
+              </Menu>
+            </Flex>
+          )}
+          {!isLoggedIn && (
+            <RouterLink to="/auth">
+              <Button
+                as={'nav'}
+                spacing={4}
+                colorScheme={'green.400'}
+                bg={'green.400'}
+                cursor="pointer"
               >
-                <Avatar
-                  size={'sm'}
-                  src={user?.photo}
-                />
-              </MenuButton>
-              <MenuList>
-                <MenuItem>
-                  <NavLink to="/profile">Profile</NavLink>
-                </MenuItem>
-                <MenuDivider />
-                <MenuItem onClick={logout}>Logout</MenuItem>
-              </MenuList>
-            </Menu>
-          </Flex>
+                Login
+              </Button>
+            </RouterLink>
+          )}
         </Flex>
 
         {isOpen ? (
