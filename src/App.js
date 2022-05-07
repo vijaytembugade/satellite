@@ -1,7 +1,12 @@
 import React from 'react';
+import { AllRoutes } from './routes';
 
 function App() {
-  return <div>Helllllo</div>;
+  return (
+    <div>
+      <AllRoutes />
+    </div>
+  );
 }
 
 export default App;
