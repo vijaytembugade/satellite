@@ -11,6 +11,7 @@ import {
   Box,
   Text,
   Checkbox,
+  Heading,
 } from '@chakra-ui/react';
 import Creatable from 'react-select/creatable';
 import { NavLink, useParams, useNavigate } from 'react-router-dom';
@@ -113,6 +114,7 @@ function JobReferalForm() {
     }
   };
   const [jobState, jobDispatch] = useReducer(jobReducer, initialiState);
+
   async function handleSubmit(e) {
     if (jobID === undefined) {
       try {
@@ -168,14 +170,18 @@ function JobReferalForm() {
       }
     }
   }
+
   return (
     <Flex
       flexDir="column"
       alignItems="center"
       justifyContent="center"
+      gap={5}
       p={{ base: '2' }}
       h="calc(100vh)"
     >
+      <Heading>Referral Form</Heading>
+      <Text>Want to give a referral? Fill out the following form by entering the job details you can give referral for.</Text>
       <FormControl
         isRequired
         width={{ base: '100%', md: '50%', xl: '25%' }}
@@ -236,7 +242,7 @@ function JobReferalForm() {
           }}
         />
         <FormLabel as="legend" my="2">
-          candidate can work Remotely ?
+          Candidate can work remotely ?
         </FormLabel>
         <Checkbox
           size="md"
@@ -252,7 +258,7 @@ function JobReferalForm() {
           Yes
         </Checkbox>
         <Text htmlFor="skills" mt="2">
-          Please Select the Skills required
+          Please select the skills required
         </Text>
         <Box my="2">
           <Creatable
@@ -278,11 +284,11 @@ function JobReferalForm() {
         </Box>
         <Flex justifyContent="space-between" p="1" mt="2">
           <NavLink to="/profile">
-            <Button colorScheme="teal" type="submit">
+            <Button colorScheme="purple" type="submit">
               Cancel
             </Button>
           </NavLink>
-          <Button colorScheme="teal" type="submit" onClick={handleSubmit}>
+          <Button colorScheme="purple" type="submit" onClick={handleSubmit}>
             Submit
           </Button>
         </Flex>

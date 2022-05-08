@@ -165,7 +165,7 @@ const JobListing = () => {
                 )}
 
                 <Link to={`/jobDescription/${item.id}`}>
-                  <Button colorScheme="gray" w="100%">
+                  <Button colorScheme="blackAlpha" w="100%">
                     See More
                   </Button>
                 </Link>
