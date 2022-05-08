@@ -47,28 +47,18 @@ function JobReferalForm() {
   } = useAuth();
   const { jobID } = useParams();
   const navigate = useNavigate();
-  const { jobsData, setJobsData } = useJobContext();
-  const [editJob, setEditJob] = useState({});
+  const { setJobsData } = useJobContext();
 
   useEffect(() => {
     (async () => {
       const collectionRef = await doc(db, 'Jobs', jobID);
       const unsb = onSnapshot(collectionRef, doc => {
-        // setEditJob(doc.data());
-        console.log(doc.data());
-
         jobDispatch({
           type: 'SET_JOB_STATE',
           payload: doc.data(),
         });
       });
     })();
-
-    // if (jobID !== undefined) {
-    //   const tempData = jobsData.filter(item => item.id === jobID);
-    //   console.log(tempData);
-    //   setEditJob(tempData);
-    // }
   }, [jobID]);
 
   const initialiState = {
