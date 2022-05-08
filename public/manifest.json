@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Satellite",
+  "name": "Satellite | Referral Community 🛰️",
+  "description": "Launch a satellite 🛰️ of your own to form a network that spreads all over the world. Be a part of our community, a community that is helping many dreamers achieve their dream job via strong referrals. Find someone who can help you find your dream job or help someone by referring them for their dream job.",
   "icons": [
     {
       "src": "favicon.ico",

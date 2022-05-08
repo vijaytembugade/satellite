@@ -62,6 +62,7 @@ Start the server
 
 - Chakra UI
 - Firebase
+- GitHub
 
 ### Non-Technical
 
