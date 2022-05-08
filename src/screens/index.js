@@ -7,3 +7,4 @@ export { Homepage } from './Homepage/Homepage';
 export { Profile } from './Profile/Profile';
 export { JobListing } from './JobListing/JobListing';
 export { Chat } from './Chat/Chat';
+export { ChatHome } from './Chat/ChatHome';
