@@ -1,4 +1,4 @@
-import { Flex, Heading, Text } from '@chakra-ui/react';
+import { Flex, Heading, Spinner, Text } from '@chakra-ui/react';
 import { collection, doc, orderBy, query } from 'firebase/firestore';
 import React from 'react';
 import { useParams } from 'react-router-dom';
@@ -48,7 +48,7 @@ export const Chat = () => {
 
   return (
     <div>
-      <Flex h="100vh">
+      <Flex h="90vh">
         <Heading>
           <title>Chat App</title>
         </Heading>
@@ -70,6 +70,16 @@ export const Chat = () => {
             overflowX="hidden"
             sx={{ scrollbarWidth: 'none' }}
           >
+            {!messages && (
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="blue.500"
+                size="xl"
+                m="auto"
+              />
+            )}
             {getMessages()}
           </Flex>
 
