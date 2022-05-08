@@ -17,7 +17,7 @@ export const UserDetails = () => {
   const {
     state: { user, profileData },
   } = useAuth();
-
+  console.log(profileData);
   return (
     <Box p={{ base: '2', md: '16' }}>
       <Stack my="4" direction={'row'}>
@@ -35,7 +35,7 @@ export const UserDetails = () => {
       <Box my="4">
         <Text fontSize="xl" fontWeight="bold">
           About Myself :
-        </Text>{' '}
+        </Text>
         <Text fontSize="xl">{profileData?.about}</Text>
       </Box>
       <Flex gap="4" wrap={'wrap'}>
@@ -50,7 +50,7 @@ export const UserDetails = () => {
           );
         })}
       </Flex>
-      {/*  */}
+
       <chakra.h1
         textAlign={'center'}
         fontSize={{ base: '2xl', md: '3xl' }}
@@ -72,7 +72,11 @@ export const UserDetails = () => {
           <Flex justifyContent={'space-between'}>
             <Box pl={{ base: 2, md: 4 }}>
               <StatLabel fontWeight={'medium'} isTruncated>
-                <a href={`${profileData?.projects?.first}`}>
+                <a
+                  href={`${profileData?.project?.first}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   First Project Name
                 </a>
               </StatLabel>
@@ -82,11 +86,16 @@ export const UserDetails = () => {
               color={useColorModeValue('gray.800', 'gray.200')}
               alignContent={'center'}
             >
-              <ExternalLinkIcon />
+              <a
+                href={`${profileData?.project?.first}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <ExternalLinkIcon />
+              </a>
             </Box>
           </Flex>
         </Stat>
-        {/* 2nd project */}
         <Stat
           px={{ base: 2, md: 4 }}
           py={'5'}
@@ -98,7 +107,11 @@ export const UserDetails = () => {
           <Flex justifyContent={'space-between'}>
             <Box pl={{ base: 2, md: 4 }}>
               <StatLabel fontWeight={'medium'} isTruncated>
-                <a href={`${profileData?.projects?.second}`}>
+                <a
+                  href={`${profileData?.project?.second}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Second Project Name
                 </a>
               </StatLabel>
@@ -108,7 +121,13 @@ export const UserDetails = () => {
               color={useColorModeValue('gray.800', 'gray.200')}
               alignContent={'center'}
             >
-              <ExternalLinkIcon />
+              <a
+                href={`${profileData?.project?.second}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <ExternalLinkIcon />
+              </a>
             </Box>
           </Flex>
         </Stat>
@@ -124,7 +143,11 @@ export const UserDetails = () => {
           <Flex justifyContent={'space-between'}>
             <Box pl={{ base: 2, md: 4 }}>
               <StatLabel fontWeight={'medium'} isTruncated>
-                <a href={`${profileData?.projects?.third}`}>
+                <a
+                  href={`${profileData?.project?.third}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Third Project Name
                 </a>
               </StatLabel>
@@ -134,7 +157,13 @@ export const UserDetails = () => {
               color={useColorModeValue('gray.800', 'gray.200')}
               alignContent={'center'}
             >
-              <ExternalLinkIcon />
+              <a
+                href={`${profileData?.project?.third}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <ExternalLinkIcon />
+              </a>
             </Box>
           </Flex>
         </Stat>
@@ -146,18 +175,31 @@ export const UserDetails = () => {
         Social Links:
       </Text>
       <Flex justify="space-evenly" gap="15">
-        <Text fontSize="4xl">
-          <i class="fa-brands fa-github"></i>
-        </Text>
-        <Text fontSize="4xl">
-          <i class="fa-brands fa-linkedin"></i>
-        </Text>
-        <Text fontSize="4xl">
-          <i class="fa-solid fa-p"></i>
-        </Text>
-        <Text fontSize="4xl">
-          <i class="fa-brands fa-twitter"></i>
-        </Text>
+        <a href={profileData.github} target="_blank">
+          <Text
+            fontSize="4xl"
+            cursor="pointer"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i class="fa-brands fa-github"></i>
+          </Text>
+        </a>
+        <a href={profileData.linkedIn} target="_blank" rel="noreferrer">
+          <Text fontSize="4xl" cursor="pointer">
+            <i class="fa-brands fa-linkedin"></i>
+          </Text>
+        </a>
+        <a href={profileData.peerlist} target="_blank" rel="noreferrer">
+          <Text fontSize="4xl" cursor="pointer">
+            <i class="fa-solid fa-p"></i>
+          </Text>
+        </a>
+        <a href={profileData.twitter} target="_blank" rel="noreferrer">
+          <Text fontSize="4xl" cursor="pointer">
+            <i class="fa-brands fa-twitter"></i>
+          </Text>
+        </a>
       </Flex>
     </Box>
   );
