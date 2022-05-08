@@ -24,7 +24,7 @@ export const SideBar = () => {
 
   const newChat = async () => {
     const input = prompt('Enter email of chat recipient');
-    if (!chatExists(input) && input !== user.email) {
+    if (!chatExists(input) && input !== user.email && input !=="") {
       await addDoc(collection(db, 'chats'), { users: [user.email, input] });
     }
   };
