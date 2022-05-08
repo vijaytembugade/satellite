@@ -260,10 +260,10 @@ export const ProfileDetails = ({ close }) => {
           />
         </Box>
         <Flex gap="10" mt="2rem">
-          <Button colorScheme="teal" variant="outline" onClick={close}>
+          <Button colorScheme="purple" variant="outline" onClick={close}>
             Cancel
           </Button>
-          <Button onClick={handleSubmit} colorScheme="blue">
+          <Button onClick={handleSubmit} colorScheme="purple">
             Submit
           </Button>
         </Flex>
