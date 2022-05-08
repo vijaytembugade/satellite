@@ -47,7 +47,7 @@ export const UserDetails = () => {
 
       <chakra.h1
         textAlign={'center'}
-        fontSize={{ base: '2xl', md: '3xl' }}
+        fontSize={{ base: '2xl', md: '2xl' }}
         py={10}
         fontWeight={'bold'}
       >
@@ -164,12 +164,11 @@ export const UserDetails = () => {
       </Flex>
      
       {/* Projects */}
-      <Flex></Flex>
-      <Text fontSize="3xl" fontWeight="bold">
-        Social Links:
+      <Text my="10px" textAlign="center" fontSize="2xl" fontWeight="bold">
+        Social Links
       </Text>
-      <Flex justify="space-evenly" gap="15">
-        <a href={profileData.github} target="_blank" rel="noreferrer">
+      <Flex justifyContent="center" gap="8">
+        <a href={profileData?.github} target="_blank" rel="noreferrer">
           <Text
             fontSize="4xl"
             cursor="pointer"
@@ -179,17 +178,17 @@ export const UserDetails = () => {
             <i class="fa-brands fa-github"></i>
           </Text>
         </a>
-        <a href={profileData.linkedIn} target="_blank" rel="noreferrer">
+        <a href={profileData?.linkedIn} target="_blank" rel="noreferrer">
           <Text fontSize="4xl" cursor="pointer">
             <i class="fa-brands fa-linkedin"></i>
           </Text>
         </a>
-        <a href={profileData.peerlist} target="_blank" rel="noreferrer">
+        <a href={profileData?.peerlist} target="_blank" rel="noreferrer">
           <Text fontSize="4xl" cursor="pointer">
             <i class="fa-solid fa-p"></i>
           </Text>
         </a>
-        <a href={profileData.twitter} target="_blank" rel="noreferrer">
+        <a href={profileData?.twitter} target="_blank" rel="noreferrer">
           <Text fontSize="4xl" cursor="pointer">
             <i class="fa-brands fa-twitter"></i>
           </Text>

@@ -5,6 +5,7 @@ import { ReferalAccordian } from './ReferalAccordian';
 import { useAuth, useJobContext } from '../contexts';
 import { deleteDoc, doc, getDocs, collection } from 'firebase/firestore';
 import { db } from '../firebase/config';
+import { toast } from 'react-toastify';
 
 const ReferalDetails = () => {
   const { jobsData, setJobsData } = useJobContext();
@@ -27,8 +28,16 @@ const ReferalDetails = () => {
         setJobsData([...newData]);
       });
       navigate('/profile');
+      toast.success('Job Deleted Successfully', {
+        position: 'bottom-right',
+        autoClose: 2000,
+      });
     } catch (e) {
       console.error('Error adding document: ', e);
+      toast.success('Error Deleting Job', {
+        position: 'bottom-right',
+        autoClose: 2000,
+      });
     }
   }
   return (
@@ -95,17 +104,17 @@ const ReferalDetails = () => {
                       mt="4"
                     >
                       <Link to={`/jobDescription/${item.id}`}>
-                        <Button colorScheme="blue" w="100%">
+                        <Button colorScheme="purple" w="100%">
                           See More
                         </Button>
                       </Link>
                       <Link to={`/referalForm/${item.id}`}>
-                        <Button colorScheme="blue" w="100%">
+                        <Button colorScheme="purple" w="100%">
                           Edit Job
                         </Button>
                       </Link>
                       <Button
-                        colorScheme="blue"
+                        colorScheme="pink"
                         onClick={e => deleteHandler(e, item.id)}
                       >
                         Delete Job

@@ -5,7 +5,6 @@ import {
   Flex,
   Heading,
   Image,
-  Link,
   Stack,
   Tab,
   TabList,
@@ -133,8 +132,8 @@ export const Profile = () => {
           <TabPanel>
             {!isDetails && (
               <Flex alignItems={'center'} justifyContent={'center'}>
-                <Button colorScheme="purple.100" onClick={() => setDetails(true)}>
-                  Add Details +
+                <Button colorScheme="purple" onClick={() => setDetails(true)}>
+                Edit Details +
                 </Button>
               </Flex>
             )}

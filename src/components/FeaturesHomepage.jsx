@@ -45,11 +45,11 @@ export function FeaturesHomepage() {
             alignSelf={'flex-start'}
             rounded={'md'}
           >
-            Our Story
+            We Propose
           </Text>
-          <Heading>A Referral Community</Heading>
+          <Heading>A Referral Community 🦄</Heading>
           <Text color={'gray.500'} fontSize={'lg'}>
-            All in one solution to turn your resumes into referrals one!
+            All in one solution to turn your resumes into referrals!
           </Text>
           <Stack
             spacing={4}
@@ -80,9 +80,7 @@ export function FeaturesHomepage() {
           <Image
             rounded={'md'}
             alt={'feature image'}
-            src={
-              'https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-            }
+            src="/assets/svgs/online-world.svg"
             objectFit={'cover'}
           />
         </Flex>

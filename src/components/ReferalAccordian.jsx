@@ -60,11 +60,11 @@ function ReferalAccordian({ id }) {
         allowMultiple
         allowToggle
         my="2"
-        width={{ base: '100%', md: '40%' }}
+        width={{ base: '100%', md: '60%' }}
       >
         <AccordionItem>
           <h2>
-            <AccordionButton _expanded={{ bg: 'blue.400', color: 'black' }}>
+            <AccordionButton _expanded={{ bg: 'gray.300', color: 'black' }}>
               <Box flex="1" textAlign="left">
                 Following People have Asked for Referal
               </Box>
@@ -77,18 +77,15 @@ function ReferalAccordian({ id }) {
                 <Box
                   borderBottom={'1px'}
                   p={2}
-                  borderColor={'gray.300'}
+                  borderColor={'purple.800'}
                   key={user?.id}
                 >
                   <Stack direction={'row'}>
-                    <Text>User id:</Text>
-                    <Text fontWeight={'bold'}>{user?.id}</Text>
-                  </Stack>
-                  <Stack direction={'row'}>
-                    <Text>User email</Text>
+                    <Text>User email: </Text>
                     <Text fontWeight={'bold'}>{user?.data?.email}</Text>
                   </Stack>
-                  <Flex gap={4}>
+
+                  <Flex gap={4} mt={4} wrap="wrap">
                     <Button
                       colorScheme={'teal'}
                       onClick={() => newChat(user?.data?.email)}
@@ -96,8 +93,15 @@ function ReferalAccordian({ id }) {
                       Start Chat
                     </Button>
                     <Link to={`/share/profile/${user?.id}`}>
-                      <Button colorScheme={'teal'}>See profile</Button>
+                      <Button colorScheme={'blackAlpha'}>See profile</Button>
                     </Link>
+                    <a
+                      href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${user?.data?.email}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Button colorScheme={'blackAlpha'}>Send Mail</Button>
+                    </a>
                   </Flex>
                 </Box>
               );
