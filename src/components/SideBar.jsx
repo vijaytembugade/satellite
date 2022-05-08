@@ -41,9 +41,9 @@ export const SideBar = () => {
         >
           <Avatar src="" marginEnd={3} name={getOtherEmail(chat.users, user)} />
           <Text>
-            {getOtherEmail(chat.users, user).substring(
+            {getOtherEmail(chat.users, user)?.substring(
               0,
-              getOtherEmail(chat.users, user).lastIndexOf('@')
+              getOtherEmail(chat.users, user)?.lastIndexOf('@')
             )}
           </Text>
         </Flex>
