@@ -88,7 +88,7 @@ const ReferalDetails = () => {
                         })}
                       </Flex>
                     </Text>
-                    <ReferalAccordian />
+                    <ReferalAccordian id={item.id} />
                     <Flex
                       flexDirection={{ base: 'column', md: 'row' }}
                       gap="4"
