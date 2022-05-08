@@ -48,16 +48,12 @@ const AuthProvider = ({ children }) => {
             photo: user?.photoURL,
           },
         });
-        toast.success('SignIn successfull', {
+        toast.success('SignIn successfull!', {
           position: 'bottom-right',
           autoClose: 2000,
         });
       } else {
         dispatch({ type: 'LOGOUT' });
-        toast.success('Logout successfull', {
-          position: 'bottom-right',
-          autoClose: 2000,
-        });
       }
     });
 

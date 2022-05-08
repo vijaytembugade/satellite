@@ -15,8 +15,9 @@ import {
   useColorModeValue,
   Stack,
   Image,
+  useColorMode,
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { NavLink, Link as RouterLink } from 'react-router-dom';
 import { useAuth } from '../contexts';
 import useLogout from '../hooks/useLogout';
@@ -50,7 +51,7 @@ export function Navbar() {
   const {
     state: { user, isLoggedIn },
   } = useAuth();
-
+  const { colorMode, toggleColorMode } = useColorMode();
   const { logout } = useLogout();
 
   return (
@@ -67,7 +68,14 @@ export function Navbar() {
           <HStack spacing={8} alignItems={'center'}>
             <Box>
               <NavLink to="/">
-                <Image src="/assets/logos/logo-light.svg" h="3.25rem" />
+                <Image
+                  src={
+                    colorMode === 'light'
+                      ? '/assets/logos/logo-light.svg'
+                      : '/assets/logos/logo-dark.svg'
+                  }
+                  h="3.25rem"
+                />
               </NavLink>
             </Box>
             <HStack
@@ -83,6 +91,9 @@ export function Navbar() {
           {isLoggedIn && (
             <Flex alignItems={'center'}>
               <Menu>
+                <Button onClick={toggleColorMode} mr="6">
+                  {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+                </Button>
                 <MenuButton
                   as={Button}
                   rounded={'full'}

@@ -20,7 +20,6 @@ const ProfileShare = () => {
     });
   }, [id]);
 
-  console.log(userDetails);
   return (
     <Box
       px={{ base: 20, md: 100 }}

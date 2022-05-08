@@ -142,6 +142,20 @@ export const ProfileDetails = ({ close }) => {
       }
     }
   }
+  const customStyles = {
+    menu: (provided, state) => ({
+      ...provided,
+      color: 'gray',
+    }),
+    control: (provided, state) => ({
+      ...provided,
+      color: 'gray',
+    }),
+    input: provided => ({
+      ...provided,
+      color: 'var(--text-color)',
+    }),
+  };
 
   return (
     <Flex justify="center" alignItems="center" direction="column" gap="4" p="6">
@@ -247,6 +261,7 @@ export const ProfileDetails = ({ close }) => {
         </FormLabel>
         <Box>
           <Creatable
+            styles={customStyles}
             defaultValue={
               state?.skills?.length > 0
                 ? state?.skills?.map(value => ({

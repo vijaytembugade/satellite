@@ -12,6 +12,7 @@ import {
   Text,
   Checkbox,
   Heading,
+  useColorMode,
 } from '@chakra-ui/react';
 import Creatable from 'react-select/creatable';
 import { NavLink, useParams, useNavigate } from 'react-router-dom';
@@ -42,6 +43,20 @@ const options = [
 ];
 
 function JobReferalForm() {
+  const customStyles = {
+    menu: (provided, state) => ({
+      ...provided,
+      color: 'gray',
+    }),
+    control: (provided, state) => ({
+      ...provided,
+      color: 'gray',
+    }),
+    input: provided => ({
+      ...provided,
+      color: 'var(--text-color)',
+    }),
+  };
   const {
     state: { user },
   } = useAuth();
@@ -181,7 +196,10 @@ function JobReferalForm() {
       h="calc(100vh)"
     >
       <Heading>Referral Form</Heading>
-      <Text>Want to give a referral? Fill out the following form by entering the job details you can give referral for.</Text>
+      <Text>
+        Want to give a referral? Fill out the following form by entering the job
+        details you can give referral for.
+      </Text>
       <FormControl
         isRequired
         width={{ base: '100%', md: '50%', xl: '25%' }}
@@ -262,6 +280,7 @@ function JobReferalForm() {
         </Text>
         <Box my="2">
           <Creatable
+            styles={customStyles}
             my="2"
             defaultValue={
               jobState?.skills?.length > 0

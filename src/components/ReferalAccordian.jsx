@@ -10,6 +10,7 @@ import {
   Stack,
   Flex,
   Button,
+  useColorMode,
 } from '@chakra-ui/react';
 import { db } from '../firebase/config';
 import { doc, getDoc, collection, getDocs, addDoc } from 'firebase/firestore';
@@ -17,6 +18,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts';
 
 function ReferalAccordian({ id }) {
+  const { colorMode } = useColorMode();
   const [apliedByusers, setAplliedBYUser] = useState([]);
   const {
     state: { user },
@@ -87,20 +89,32 @@ function ReferalAccordian({ id }) {
 
                   <Flex gap={4} mt={4} wrap="wrap">
                     <Button
-                      colorScheme={'teal'}
+                      colorScheme="teal"
                       onClick={() => newChat(user?.data?.email)}
                     >
                       Start Chat
                     </Button>
                     <Link to={`/share/profile/${user?.id}`}>
-                      <Button colorScheme={'blackAlpha'}>See profile</Button>
+                      <Button
+                        colorScheme={
+                          colorMode === 'light' ? 'blackAlpha' : 'purple'
+                        }
+                      >
+                        See profile
+                      </Button>
                     </Link>
                     <a
                       href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${user?.data?.email}`}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <Button colorScheme={'blackAlpha'}>Send Mail</Button>
+                      <Button
+                        colorScheme={
+                          colorMode === 'light' ? 'blackAlpha' : 'purple'
+                        }
+                      >
+                        Send Mail
+                      </Button>
                     </a>
                   </Flex>
                 </Box>
