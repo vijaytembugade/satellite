@@ -11,7 +11,6 @@ import { useJobContext } from '../../contexts';
 
 const Homepage = () => {
   const { jobsData } = useJobContext();
-
   return (
     <>
       <Hero />

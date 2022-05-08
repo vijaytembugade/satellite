@@ -9,11 +9,22 @@ import {
   IconButton,
   useColorModeValue,
   Image,
+  useColorMode,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
 const Logo = props => {
-  return <Image src="/assets/logos/logo-light.svg" w="60%" />;
+  const { colorMode } = useColorMode();
+  return (
+    <Image
+      src={
+        colorMode === 'light'
+          ? '/assets/logos/logo-light.svg'
+          : '/assets/logos/logo-dark.svg'
+      }
+      w="60%"
+    />
+  );
 };
 
 const ListHeader = ({ children }) => {

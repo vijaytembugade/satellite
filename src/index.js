@@ -1,4 +1,9 @@
-import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
+import {
+  ChakraProvider,
+  ColorModeScript,
+  ThemeProvider,
+  theme,
+} from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -10,16 +15,18 @@ import { BrowserRouter } from 'react-router-dom';
 ReactDOM.render(
   <StrictMode>
     <ChakraProvider>
-      <BrowserRouter>
-        <AuthProvider>
-          <JobProvider>
-            <SidebarProvider>
-              <ColorModeScript />
-              <App />
-            </SidebarProvider>
-          </JobProvider>
-        </AuthProvider>
-      </BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <AuthProvider>
+            <JobProvider>
+              <SidebarProvider>
+                <ColorModeScript />
+                <App />
+              </SidebarProvider>
+            </JobProvider>
+          </AuthProvider>
+        </BrowserRouter>
+      </ThemeProvider>
     </ChakraProvider>
   </StrictMode>,
   document.getElementById('root')
