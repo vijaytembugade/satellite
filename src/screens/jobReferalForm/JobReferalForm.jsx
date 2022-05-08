@@ -1,18 +1,16 @@
-import React, { useReducer, useState, useEffect } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { useAuth, useJobContext } from '../../contexts';
 import {
   FormControl,
   FormLabel,
   Input,
   Textarea,
-  HStack,
-  RadioGroup,
-  Radio,
   Flex,
   Button,
   Select,
   Box,
   Text,
+  Checkbox,
 } from '@chakra-ui/react';
 import Creatable from 'react-select/creatable';
 import { NavLink, useParams, useNavigate } from 'react-router-dom';
@@ -135,16 +133,6 @@ function JobReferalForm() {
     } else {
       try {
         const collectionRef = await doc(db, 'Jobs', jobID);
-
-        // const {
-        //   company_name,
-        //   isRemote,
-        //   job_description,
-        //   job_role,
-        //   location,
-        //   uid,
-        //   skills,
-        // } = jobState;
         updateDoc(collectionRef, {
           ...jobState,
         });
@@ -233,29 +221,28 @@ function JobReferalForm() {
         <FormLabel as="legend" my="2">
           candidate can work Remotely ?
         </FormLabel>
-        <RadioGroup>
-          <HStack
-            spacing="24px"
-            onChange={e => {
-              jobDispatch({
-                type: 'SET_IS_REMOTE',
-                payload: e.target.value,
-              });
-            }}
-            value={jobState.isRemote}
-          >
-            <Radio value={true}>Yes</Radio>
-            <Radio value={false}>No</Radio>
-          </HStack>
-        </RadioGroup>
+        <Checkbox
+          size="md"
+          isChecked={jobState?.isRemote}
+          colorScheme="teal"
+          onChange={e => {
+            jobDispatch({
+              type: 'SET_IS_REMOTE',
+              payload: e.target.checked,
+            });
+          }}
+        >
+          Yes
+        </Checkbox>
+        <Text htmlFor="skills" mt="2">
+          Please Select the Skills required
+        </Text>
         <Box my="2">
-          <Text htmlFor="skills" mt="2">
-            Please Select the Skills required
-          </Text>
           <Creatable
+            my="2"
             defaultValue={
-              jobState.skills?.length > 0
-                ? jobState.skills?.map(value => ({
+              jobState?.skills?.length > 0
+                ? jobState?.skills?.map(value => ({
                     value: value,
                     label: value,
                   }))

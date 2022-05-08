@@ -99,6 +99,7 @@ export const ProfileDetails = ({ close }) => {
         });
 
         console.log(docRef);
+        close();
       } catch (e) {
         console.error('Error adding document: ', e);
       }
@@ -113,11 +114,10 @@ export const ProfileDetails = ({ close }) => {
             payload: { data: doc.data(), profileId: doc.id },
           });
         });
+        close();
       } catch (err) {
         console.error(err);
       }
-      // const collectionRef = collection(db, 'Users');
-      // const q = query(collectionRef, where('uid', '==', user?.uid));
     }
   }
 

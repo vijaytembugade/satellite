@@ -26,12 +26,6 @@ export const UserDetails = () => {
         </Text>
         <Text fontSize="xl">{user?.name}</Text>
       </Stack>
-      <Stack my="4" direction={'row'}>
-        <Text fontSize="xl" fontWeight="bold">
-          Current Company :
-        </Text>
-        <Text fontSize="xl">Infosys</Text>
-      </Stack>
       <Box my="4">
         <Text fontSize="xl" fontWeight="bold">
           About Myself :
@@ -57,7 +51,7 @@ export const UserDetails = () => {
         py={10}
         fontWeight={'bold'}
       >
-        Need for Projects to Look for that can bring skills to the table.
+        Upload your best 3 Projects.
       </chakra.h1>
       {/* Card 1 */}
       <Flex gap="10" flexWrap="wrap" p="3">
@@ -175,7 +169,7 @@ export const UserDetails = () => {
         Social Links:
       </Text>
       <Flex justify="space-evenly" gap="15">
-        <a href={profileData.github} target="_blank">
+        <a href={profileData.github} target="_blank" rel="noreferrer">
           <Text
             fontSize="4xl"
             cursor="pointer"
