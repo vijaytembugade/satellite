@@ -17,11 +17,10 @@ function JobDescription() {
           setJobDetails(doc.data());
         });
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     })(jobID);
   }, [jobID]);
-  console.log(jobDeatils);
   return (
     <div>
       <Box px={{ base: '4', md: '20' }} pt="10">
