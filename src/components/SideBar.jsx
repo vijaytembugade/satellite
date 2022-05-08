@@ -1,12 +1,17 @@
 import { Avatar } from '@chakra-ui/avatar';
-import { Button } from '@chakra-ui/react';
 import { Flex, Text } from '@chakra-ui/layout';
-import { useAuth } from '../contexts';
+import { useAuth, useSidebarContext } from '../contexts';
 import useCollection from '../hooks/useCollection';
 import { getOtherEmail } from '../util/getOtherEmail';
 import { useNavigate } from 'react-router-dom';
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../firebase/config';
+import {
+  Drawer,
+  DrawerBody,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+} from '@chakra-ui/react';
 
 export const SideBar = () => {
   const {
@@ -14,22 +19,9 @@ export const SideBar = () => {
   } = useAuth();
 
   const { documents } = useCollection('chats');
-
   const chats = documents;
-
-  const chatExists = email =>
-    chats?.find(
-      chat => chat.users.includes(user.email) && chat.users.includes(email)
-    );
-
-  const newChat = async () => {
-    const input = prompt('Enter email of chat recipient');
-    if (!chatExists(input) && input !== user.email && input !=="") {
-      await addDoc(collection(db, 'chats'), { users: [user.email, input] });
-    }
-  };
-
   const navigate = useNavigate();
+  const { isOpen, onClose, btnRef } = useSidebarContext();
 
   const chatList = () => {
     return chats
@@ -39,45 +31,50 @@ export const SideBar = () => {
           key={Math.random()}
           p={3}
           align="center"
+          borderBottom="1px solid"
+          borderColor="gray.200"
           _hover={{ bg: 'gray.100', cursor: 'pointer' }}
-          onClick={() => navigate(`/chat/${chat.id}`)}
+          onClick={() => {
+            navigate(`/chat/${chat.id}`);
+            onClose();
+          }}
         >
-          <Avatar src="" marginEnd={3} />
-          <Text>{getOtherEmail(chat.users, user)}</Text>
+          <Avatar src="" marginEnd={3} name={getOtherEmail(chat.users, user)} />
+          <Text>
+            {getOtherEmail(chat.users, user).substring(
+              0,
+              getOtherEmail(chat.users, user).lastIndexOf('@')
+            )}
+          </Text>
         </Flex>
       ));
   };
 
   return (
-    <Flex
-      h="100%"
-      w="300px"
-      borderEnd="1px solid"
-      borderColor="gray.200"
-      direction="column"
-    >
-      <Flex
-        h="81px"
-        w="100%"
-        align="center"
-        justifyContent="space-between"
-        borderBottom="1px solid"
-        borderColor="gray.200"
-        p={3}
+    <>
+      <Drawer
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        finalFocusRef={btnRef}
       >
-        <Flex align="center">
-          <Avatar src={user?.photo} marginEnd={3} />
-          <Text>{user?.name}</Text>
-        </Flex>
-      </Flex>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>
+            <Flex align="center">
+              <Avatar src={user?.photo} marginEnd={3} />
+              <Text>{user?.name}</Text>
+            </Flex>
+          </DrawerHeader>
 
-      <Button m={5} p={4} onClick={newChat}>
-        New Chat
-      </Button>
-
-      <Flex overflowX="scroll" direction="column" flex={1}>
-        {chatList()}
-      </Flex>
-    </Flex>
+          <DrawerBody>
+            <Flex overflowX="scroll" direction="column" flex={1}>
+              {chatList()}
+            </Flex>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </>
   );
 };

@@ -10,6 +10,7 @@ import {
   useCollectionData,
   useDocumentData,
 } from 'react-firebase-hooks/firestore';
+import { useSidebarContext } from '../../contexts';
 
 export const Chat = () => {
   const { chatId } = useParams();
@@ -31,8 +32,8 @@ export const Chat = () => {
       return (
         <Flex
           key={Math.random()}
-          alignSelf={sender ? 'flex-start' : 'flex-end'}
-          bg={sender ? 'blue.100' : 'green.100'}
+          alignSelf={sender ? 'flex-end' : 'flex-start'}
+          bg={sender ? 'green.100' : 'blue.100'}
           w="fit-content"
           minWidth="100px"
           borderRadius="lg"
@@ -43,6 +44,7 @@ export const Chat = () => {
         </Flex>
       );
     });
+  const { onOpen, btnRef } = useSidebarContext();
 
   return (
     <div>
@@ -51,10 +53,14 @@ export const Chat = () => {
           <title>Chat App</title>
         </Heading>
 
-        <SideBar />
+        <SideBar btnRef={btnRef} />
 
         <Flex flex={1} direction="column">
-          <TopBar email={getOtherEmail(chat?.users, user)} />
+          <TopBar
+            email={getOtherEmail(chat?.users, user)}
+            open={onOpen}
+            btnRef={btnRef}
+          />
 
           <Flex
             flex={1}

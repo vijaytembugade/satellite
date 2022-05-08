@@ -2,7 +2,7 @@ import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { AuthProvider, JobProvider } from './contexts';
+import { AuthProvider, JobProvider, SidebarProvider } from './contexts';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
@@ -13,8 +13,10 @@ ReactDOM.render(
       <BrowserRouter>
         <AuthProvider>
           <JobProvider>
-            <ColorModeScript />
-            <App />
+            <SidebarProvider>
+              <ColorModeScript />
+              <App />
+            </SidebarProvider>
           </JobProvider>
         </AuthProvider>
       </BrowserRouter>

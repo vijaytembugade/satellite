@@ -9,6 +9,7 @@ import {
   AccordionItem,
   Stack,
   Button,
+  Flex,
 } from '@chakra-ui/react';
 import { db } from '../firebase/config';
 import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
@@ -69,9 +70,18 @@ function ReferalAccordian({ id }) {
                     <Text>User email</Text>
                     <Text fontWeight={'bold'}>{user?.data?.email}</Text>
                   </Stack>
-                  <Link to={`/share/profile/${user?.id}`}>
-                    <Button colorScheme={'teal'}>See profile</Button>
-                  </Link>
+                  <Flex gap={4}>
+                    <Link to={`/share/profile/${user?.id}`}>
+                      <Button colorScheme={'teal'}>See profile</Button>
+                    </Link>
+                    <a
+                      href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${user?.data?.email}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Button colorScheme={'teal'}>Send Mail</Button>
+                    </a>
+                  </Flex>
                 </Box>
               );
             })}

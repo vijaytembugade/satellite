@@ -1,8 +1,11 @@
-import { Flex, Heading, Text } from '@chakra-ui/react';
+import { Flex, Heading, Text,Button } from '@chakra-ui/react';
 import React from 'react';
 import { SideBar } from '../../components';
+import { useSidebarContext } from '../../contexts';
 
 export const ChatHome = () => {
+  const { onOpen,btnRef} = useSidebarContext();
+
   return (
     <div>
       <Flex h="100vh">
@@ -12,8 +15,11 @@ export const ChatHome = () => {
 
         <SideBar />
 
-        <Flex flex={1} direction="column">
+        <Flex flex={1} direction="column" justify="center" alignItems="center">
           <Text>Hello and start chatting</Text>
+          <Button ref={btnRef} colorScheme="teal" onClick={onOpen} width="10rem">
+        Open
+      </Button>
         </Flex>
       </Flex>
     </div>
