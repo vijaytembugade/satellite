@@ -51,7 +51,7 @@ const ReferalDetails = () => {
       >
         <Box>
           <NavLink to="/referalForm">
-            <Button colorScheme="teal" variant="outline">
+            <Button colorScheme="purple" variant="outline">
               Add Job
             </Button>
           </NavLink>
