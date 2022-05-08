@@ -1,6 +1,6 @@
 import { Flex, Heading, Text } from '@chakra-ui/react';
 import { collection, doc, orderBy, query } from 'firebase/firestore';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { BottomBar, SideBar, TopBar } from '../../components';
 import { useAuth } from '../../contexts';
@@ -44,19 +44,6 @@ export const Chat = () => {
       );
     });
 
-  const bottomOfChat = useRef();
-  useEffect(
-    () =>
-      setTimeout(
-        bottomOfChat.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        }),
-        100
-      ),
-    []
-  );
-
   return (
     <div>
       <Flex h="100vh">
@@ -78,7 +65,6 @@ export const Chat = () => {
             sx={{ scrollbarWidth: 'none' }}
           >
             {getMessages()}
-            <div ref={bottomOfChat}></div>
           </Flex>
 
           <BottomBar id={chatId} user={user} />
