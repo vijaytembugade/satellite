@@ -20,22 +20,30 @@ import { NavLink, Link as RouterLink } from 'react-router-dom';
 import { useAuth } from '../contexts';
 import useLogout from '../hooks/useLogout';
 
-const Links = ['home', 'jobs', 'referalForm'];
+const Links = [
+  { route: 'home', title: 'Home' },
+  { route: 'jobs', title: 'Jobs' },
+  { route: 'referalForm', title: 'Referral' },
+];
 
-const NavLinkMain = ({ children }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={'md'}
-    _hover={{
-      textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
-    }}
-    to={`/${children}`}
-  >
-    <NavLink to={`/${children}`}>{`${children}`.toUpperCase()}</NavLink>
-  </Link>
-);
+const NavLinkMain = ({ children }) => {
+  return (
+    <Link
+      px={2}
+      py={1}
+      rounded={'md'}
+      _hover={{
+        textDecoration: 'none',
+        bg: useColorModeValue('gray.200', 'gray.700'),
+      }}
+      to={`/${children.route}`}
+    >
+      <NavLink to={`/${children.route}`}>
+        {`${children.title}`.toUpperCase()}
+      </NavLink>
+    </Link>
+  );
+};
 
 export function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -109,9 +117,11 @@ export function Navbar() {
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
               {Links.map(link => (
-                <NavLinkMain to={`/${link}`} key={link}>
-                  {link}
-                </NavLinkMain>
+                <NavLinkMain
+                  to={`/${link.route}`}
+                  key={link.route}
+                  children={link}
+                />
               ))}
             </Stack>
           </Box>

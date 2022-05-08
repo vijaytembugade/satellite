@@ -1,9 +1,43 @@
 import { Badge, Box, Button, Flex, Text } from '@chakra-ui/react';
+import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
 import React from 'react';
-import { useJobContext } from '../../contexts';
+import { useAuth, useJobContext } from '../../contexts';
+import { db } from '../../firebase/config';
+import { Link } from 'react-router-dom';
 
 const JobListing = () => {
   const { jobsData } = useJobContext();
+  const {
+    state: { user, profileId },
+  } = useAuth();
+
+  const handleAddForReferrals = async id => {
+    if (user) {
+      try {
+        const collectionRef = await doc(db, 'Users', profileId);
+        console.log(collectionRef);
+
+        const docSnap = await getDoc(collectionRef);
+        console.log(docSnap.data());
+        if (!docSnap.data().appliedJobs.includes(id)) {
+          await updateDoc(collectionRef, { appliedJobs: arrayUnion(id) });
+        } else {
+          throw new Error('Already applied for this job');
+        }
+
+        const jobCollectionRef = await doc(db, 'Jobs', id);
+        const docJobSnap = await getDoc(jobCollectionRef);
+        console.log(docJobSnap.data());
+        if (!docJobSnap.data().appliedBy.includes(user.uid)) {
+          await updateDoc(jobCollectionRef, {
+            appliedBy: arrayUnion(user.uid),
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
   return (
     <div>
       <Text textAlign={'center'} fontSize={'3xl'} fontWeight="bold" pt={6}>
@@ -20,11 +54,11 @@ const JobListing = () => {
           return (
             <Box
               key={item.id}
-              width={'full'}
+              width="full"
               bg="gray.100"
               borderBottom={'1px'}
-              py={{ base: 6, md: 10 }}
-              px={{ base: 6, md: 16 }}
+              py={{ base: '6', md: '10' }}
+              px={{ base: '6', md: '16' }}
             >
               <Text fontWeight={'bold'}>{item.data.job_role}</Text>
               <Text>
@@ -34,7 +68,7 @@ const JobListing = () => {
               <Text noOfLines={3}>{item.data.job_description}</Text>
 
               <Text>
-                <Flex width={'100%'} gap={2} wrap={'wrap'} alignItems="center">
+                <Flex width="100%" gap="2" wrap={'wrap'} alignItems="center">
                   <Text fontWeight={'bold'}>Skills :</Text>
                   {item.data.skills.map(skill => {
                     return (
@@ -45,10 +79,24 @@ const JobListing = () => {
                   })}
                 </Flex>
               </Text>
-
-              <Button mt={4} colorScheme="blue">
-                Ask for referals
-              </Button>
+              <Flex
+                flexDirection={{ base: 'column', md: 'row' }}
+                gap="4"
+                mt="4"
+                w="100%"
+              >
+                <Button
+                  colorScheme="blue"
+                  onClick={() => handleAddForReferrals(item.id)}
+                >
+                  Ask for referals
+                </Button>
+                <Link to={`/jobDescription/${item.id}`}>
+                  <Button colorScheme="blue" w="100%">
+                    See More
+                  </Button>
+                </Link>
+              </Flex>
             </Box>
           );
         })}

@@ -1,15 +1,16 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { RequireAuth } from '../components';
 import {
   UserProfile,
   JobListing,
   Auth,
-  Role,
   Homepage,
   JobReferalForm,
   Profile,
   Chat,
   ChatHome,
+  JobDescription,
 } from '../screens';
 
 function AllRoutes() {
@@ -19,15 +20,63 @@ function AllRoutes() {
         <Route path="/" element={<Homepage />} />
         <Route path="/home" element={<Homepage />} />
         <Route path="/userProfile" element={<UserProfile />} />
-        <Route path="/referalForm" element={<JobReferalForm />} />
-        <Route path="/referalForm/:jobID" element={<JobReferalForm />} />
-        <Route path="/jobs" element={<JobListing />} />
+        <Route
+          path="/referalForm"
+          element={
+            <RequireAuth>
+              <JobReferalForm />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/referalForm/:jobID"
+          element={
+            <RequireAuth>
+              <JobReferalForm />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/jobDescription/:jobID"
+          element={
+            <RequireAuth>
+              <JobDescription />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/jobs"
+          element={
+            <RequireAuth>
+              <JobListing />
+            </RequireAuth>
+          }
+        />
         <Route path="/auth" element={<Auth />} />
-        {/* Not needed Remove Later */}
-        <Route path="/role" element={<Role />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/chat" element={<ChatHome />} />
-        <Route path="/chat/:chatId" element={<Chat />} />
+        <Route
+          path="/chat"
+          element={
+            <RequireAuth>
+              <ChatHome />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/chat/:chatId"
+          element={
+            <RequireAuth>
+              <Chat />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <RequireAuth>
+              <Profile />
+            </RequireAuth>
+          }
+        />
       </Routes>
     </div>
   );
