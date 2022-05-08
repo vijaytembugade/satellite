@@ -65,14 +65,17 @@ const AuthProvider = ({ children }) => {
           id: doc.id,
           data: doc.data(),
         }));
+
+        console.log(newData);
         dispatch({
           type: 'SET_PROFILE_DATA',
-          payload: { data: newData[0].data, profileId: newData[0].id },
+          payload: { data: newData[0]?.data, profileId: newData[0]?.id },
         });
       });
     }
   }, [isLoggedIn, user]);
 
+  console.log(state);
   return (
     <AuthContext.Provider value={{ state, dispatch }}>
       {children}

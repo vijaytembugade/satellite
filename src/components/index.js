@@ -7,4 +7,7 @@ export { ReferalAccordian } from './ReferalAccordian';
 export { UserDetails } from './UserDetails';
 export { FeaturesHomepage } from './FeaturesHomepage';
 export { Footer } from './Footer';
+export { SideBar } from './SideBar';
+export { TopBar } from './TopBar';
+export { BottomBar } from './BottomBar';
 export { RequireAuth } from './RequireAuth';

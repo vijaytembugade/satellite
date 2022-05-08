@@ -6,4 +6,7 @@ export { Role } from './Role/Role';
 export { Homepage } from './Homepage/Homepage';
 export { Profile } from './Profile/Profile';
 export { JobListing } from './JobListing/JobListing';
+export { Chat } from './Chat/Chat';
+export { ChatHome } from './Chat/ChatHome';
 export { JobDescription } from './jobDescription/JobDescription';
+export { ProfileShare } from './ProfileShare/ProfileShare';
