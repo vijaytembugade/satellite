@@ -1,68 +1,93 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# [Satellite](https://satellite-580a3.web.app/) | Referral Community 🛰️
 
-## Available Scripts
+Launch a satellite 🛰️ of your own to form a network that spreads all over the world. Be a part of our community, a community that is helping many dreamers achieve their dream job via strong referrals. Find someone who can help you find your dream job or help someone by referring them for their dream job..
 
-In the project directory, you can run:
+## Live
 
-### `npm start`
+[satellite.web.app](https://satellite-580a3.web.app/)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Informative Home Page
+- User Authorization
+  - Sign In
+  - Sign Out
+- Protected/Private Routes
+- Jobs Listing
+- Search by Company, Role, etc.
+- User Profile
+  - Edit Profile
+  - Post a Referral
+- Ask for a Referral
+- List of Candidates who applied for Referral
+  - Analyze Profile
+  - Chat with the Candidate
+  - Mail the Candidate
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Client:** React, React Router, Context API, Chakra UI, Font Awesome
 
-### `npm run build`
+**Server:** Firebase (BaaS)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Run Locally
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Clone the project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+  git clone https://github.com/vijaytembugade/satellite.git
+```
 
-### `npm run eject`
+Go to the project directory
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+  cd satellite
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Install dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+  npm install
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Start the server
 
-## Learn More
+```bash
+  npm run start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Lessons Learned
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Technical
 
-### Code Splitting
+- Chakra UI
+- Firebase
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Non-Technical
 
-### Analyzing the Bundle Size
+- Time Management
+- Team Work
+- Project Planning/Design
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Acknowledgements
 
-### Making a Progressive Web App
+- [neoG Camp](https://neog.camp/)
+- [Tanay Pratap](https://twitter.com/tanaypratap)
+- [Aditya Doshi](https://twitter.com/adidoshi08)
+- [Narhari Kale](https://twitter.com/NarhariKale4)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Author
 
-### Advanced Configuration
+- [@vijaytembugade](https://github.com/vijaytembugade)
+- [@prathmeshjagtap](https://github.com/prathmeshjagtap)
+- [@t007rushi](https://github.com/t007rushi)
+- [@horsemaker](https://github.com/horsemaker)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## Feedback
 
-### Deployment
+If you have any feedback, please reach out to us at
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- vijaytembugade21@gmail.com
+- prathmeshjagtap405@gmail.com
+- t007rushikesh@gmail.com
+- iamhorsemaker@gmail.com
