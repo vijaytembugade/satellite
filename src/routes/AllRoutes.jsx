@@ -11,6 +11,7 @@ import {
   Chat,
   ChatHome,
   JobDescription,
+  ProfileShare,
 } from '../screens';
 
 function AllRoutes() {
@@ -20,6 +21,7 @@ function AllRoutes() {
         <Route path="/" element={<Homepage />} />
         <Route path="/home" element={<Homepage />} />
         <Route path="/userProfile" element={<UserProfile />} />
+        <Route path="/share/profile/:id" element={<ProfileShare />} />
         <Route
           path="/referalForm"
           element={

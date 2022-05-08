@@ -9,3 +9,4 @@ export { JobListing } from './JobListing/JobListing';
 export { Chat } from './Chat/Chat';
 export { ChatHome } from './Chat/ChatHome';
 export { JobDescription } from './jobDescription/JobDescription';
+export { ProfileShare } from './ProfileShare/ProfileShare';
