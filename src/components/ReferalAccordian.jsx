@@ -17,8 +17,6 @@ import { Link } from 'react-router-dom';
 function ReferalAccordian({ id }) {
   const [apliedByusers, setAplliedBYUser] = useState([]);
 
-  console.log(apliedByusers);
-
   useEffect(() => {
     (async () => {
       try {
