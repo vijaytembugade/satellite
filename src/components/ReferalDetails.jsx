@@ -1,15 +1,36 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { Button, Box, Flex, Text, Badge } from '@chakra-ui/react';
 import { ReferalAccordian } from './ReferalAccordian';
 import { useAuth, useJobContext } from '../contexts';
+import { deleteDoc, doc, getDocs, collection } from 'firebase/firestore';
+import { db } from '../firebase/config';
 
 const ReferalDetails = () => {
-  const { jobsData } = useJobContext();
+  const { jobsData, setJobsData } = useJobContext();
   const {
     state: { user },
   } = useAuth();
   const userReferedJobs = jobsData.filter(item => item.data.uid === user?.uid);
+  const navigate = useNavigate();
+
+  async function deleteHandler(e, jobID) {
+    e.preventDefault();
+    try {
+      const docRef = await deleteDoc(doc(db, 'Jobs', jobID));
+      const collectionRef = collection(db, 'Jobs');
+      getDocs(collectionRef).then(snapshot => {
+        const newData = snapshot.docs.map(doc => ({
+          id: doc.id,
+          data: doc.data(),
+        }));
+        setJobsData([...newData]);
+      });
+      navigate('/profile');
+    } catch (e) {
+      console.error('Error adding document: ', e);
+    }
+  }
   return (
     <div>
       <Flex
@@ -73,7 +94,12 @@ const ReferalDetails = () => {
                       gap="4"
                       mt="4"
                     >
-                      <Button colorScheme="blue">Delete Job</Button>
+                      <Button
+                        colorScheme="blue"
+                        onClick={e => deleteHandler(e, item.id)}
+                      >
+                        Delete Job
+                      </Button>
                       <Link to={`/referalForm/${item.id}`}>
                         <Button colorScheme="blue" w="100%">
                           Edit Job
