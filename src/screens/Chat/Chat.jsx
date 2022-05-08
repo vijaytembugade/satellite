@@ -14,7 +14,7 @@ import { useSidebarContext } from '../../contexts';
 
 export const Chat = () => {
   const { chatId } = useParams();
-  console.log(chatId);
+
   const {
     state: { user },
   } = useAuth();
@@ -67,7 +67,7 @@ export const Chat = () => {
             direction="column"
             pt={4}
             mx={5}
-            overflowX="scroll"
+            overflowX="hidden"
             sx={{ scrollbarWidth: 'none' }}
           >
             {getMessages()}

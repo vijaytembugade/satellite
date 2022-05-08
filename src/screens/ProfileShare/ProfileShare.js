@@ -1,13 +1,6 @@
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { Badge, Box, Flex, Link, Stack, Text } from '@chakra-ui/react';
-import {
-  collection,
-  doc,
-  getDocs,
-  onSnapshot,
-  query,
-  where,
-} from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { db } from '../../firebase/config';
@@ -41,14 +34,14 @@ const ProfileShare = () => {
       border={'1px'}
     >
       <Flex alignItems={'center'} gap={2}>
-        <Text fontSize={{ base: 14, md: 16 }}>Name:</Text>
-        <Text fontSize={{ base: 16, md: 32 }} p={3} fontWeight={'bold'}>
-          {userDetails?.email}
-        </Text>
-      </Flex>
-      <Flex alignItems={'center'} gap={2}>
         <Text fontSize={{ base: 14, md: 16 }}>Email:</Text>
-        <Text fontSize={{ base: 14, md: 16 }} p={3} fontWeight={'bold'}>
+        <Text
+          fontSize={{ base: 14, md: 16 }}
+          p={1}
+          fontWeight={'bold'}
+          noOfLines="2"
+          w="15"
+        >
           {userDetails?.email}
         </Text>
       </Flex>
