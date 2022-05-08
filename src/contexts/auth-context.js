@@ -5,32 +5,33 @@ import { auth, db } from '../firebase/config';
 
 const AuthContext = createContext();
 
-const AuthProvider = ({ children }) => {
-  const initialState = {
-    user: null,
-    isLoggedIn: false,
-    profileData: null,
-    profileId: null,
-  };
-  const authReducer = (state, action) => {
-    switch (action.type) {
-      case 'LOGIN': {
-        return { ...state, user: action.payload, isLoggedIn: true };
-      }
-      case 'LOGOUT': {
-        return { ...state, user: null, isLoggedIn: false };
-      }
-      case 'SET_PROFILE_DATA': {
-        return {
-          ...state,
-          profileData: action.payload.data,
-          profileId: action.payload.profileId,
-        };
-      }
-      default:
-        return state;
+const initialState = {
+  user: null,
+  isLoggedIn: false,
+  profileData: null,
+  profileId: null,
+};
+const authReducer = (state, action) => {
+  switch (action.type) {
+    case 'LOGIN': {
+      return { ...state, user: action.payload, isLoggedIn: true };
     }
-  };
+    case 'LOGOUT': {
+      return { ...state, user: null, isLoggedIn: false };
+    }
+    case 'SET_PROFILE_DATA': {
+      return {
+        ...state,
+        profileData: action.payload.data,
+        profileId: action.payload.profileId,
+      };
+    }
+    default:
+      return state;
+  }
+};
+
+const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
   const { isLoggedIn, user } = state;
 

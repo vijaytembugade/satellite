@@ -1,10 +1,10 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { RequireAuth } from '../components';
 import {
   UserProfile,
   JobListing,
   Auth,
-  Role,
   Homepage,
   JobReferalForm,
   Profile,
@@ -18,14 +18,33 @@ function AllRoutes() {
         <Route path="/" element={<Homepage />} />
         <Route path="/home" element={<Homepage />} />
         <Route path="/userProfile" element={<UserProfile />} />
-        <Route path="/referalForm" element={<JobReferalForm />} />
-        <Route path="/referalForm/:jobID" element={<JobReferalForm />} />
+        <Route
+          path="/referalForm"
+          element={
+            <RequireAuth>
+              <JobReferalForm />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/referalForm/:jobID"
+          element={
+            <RequireAuth>
+              <JobReferalForm />
+            </RequireAuth>
+          }
+        />
         <Route path="/jobDescription/:jobID" element={<JobDescription />} />
         <Route path="/jobs" element={<JobListing />} />
         <Route path="/auth" element={<Auth />} />
-        {/* Not needed Remove Later */}
-        <Route path="/role" element={<Role />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={
+            <RequireAuth>
+              <Profile />
+            </RequireAuth>
+          }
+        />
       </Routes>
     </div>
   );
