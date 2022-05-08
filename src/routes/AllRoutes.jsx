@@ -8,6 +8,7 @@ import {
   Homepage,
   JobReferalForm,
   Profile,
+  JobDescription,
 } from '../screens';
 
 function AllRoutes() {
@@ -19,6 +20,7 @@ function AllRoutes() {
         <Route path="/userProfile" element={<UserProfile />} />
         <Route path="/referalForm" element={<JobReferalForm />} />
         <Route path="/referalForm/:jobID" element={<JobReferalForm />} />
+        <Route path="/jobDescription/:jobID" element={<JobDescription />} />
         <Route path="/jobs" element={<JobListing />} />
         <Route path="/auth" element={<Auth />} />
         {/* Not needed Remove Later */}
