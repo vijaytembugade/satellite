@@ -10,6 +10,7 @@ import {
   InputGroup,
   InputLeftElement,
   Text,
+  useColorMode,
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import {
@@ -23,6 +24,7 @@ import { db } from '../../firebase/config';
 import { toast } from 'react-toastify';
 
 const JobListing = () => {
+  const { colorMode } = useColorMode();
   const { jobsData } = useJobContext();
   const {
     state: { user, profileId, profileData },
@@ -51,11 +53,8 @@ const JobListing = () => {
   const handleAddForReferrals = async id => {
     if (user) {
       try {
-        console.log('hello');
         if (profileData !== undefined && profileId !== undefined) {
-          console.log('Hello if');
           const collectionRef = await doc(db, 'Users', profileId);
-
           const docSnap = await getDoc(collectionRef);
           await updateDoc(collectionRef, {
             appliedJobs: arrayUnion(id),
@@ -123,7 +122,7 @@ const JobListing = () => {
             <Box
               key={item.id}
               width="full"
-              bg="gray.100"
+              bg={colorMode === 'light' ? 'gray.100' : 'gray.700'}
               borderBottom={'1px'}
               py={{ base: '6', md: '10' }}
               px={{ base: '6', md: '16' }}
@@ -167,7 +166,12 @@ const JobListing = () => {
                 )}
 
                 <Link to={`/jobDescription/${item.id}`}>
-                  <Button colorScheme="blackAlpha" w="100%">
+                  <Button
+                    colorScheme={
+                      colorMode === 'light' ? 'blackAlpha' : 'purple'
+                    }
+                    w="100%"
+                  >
                     See More
                   </Button>
                 </Link>

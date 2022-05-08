@@ -40,7 +40,7 @@ export const Chat = () => {
           p={3}
           m={1}
         >
-          <Text>{msg.text}</Text>
+          <Text color="black">{msg.text}</Text>
         </Flex>
       );
     });

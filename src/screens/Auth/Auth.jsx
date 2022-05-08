@@ -1,4 +1,4 @@
-import { Button, Center, Flex, Image, Text } from '@chakra-ui/react';
+import { Button, Flex, Image, Text, useColorMode } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts';
@@ -18,6 +18,7 @@ export const Auth = () => {
   }, [isLoggedIn, navigate]);
 
   const { signInWithGoogle } = useGoogleLogin();
+  const { colorMode } = useColorMode();
   return (
     <Flex
       flexDirection="column"
@@ -38,7 +39,7 @@ export const Auth = () => {
           src="https://www.pikpng.com/pngl/b/44-442110_jpg-black-and-white-library-google-logo-png.png"
           alt="Google"
         />
-        <Text ml={'4'} color="black">
+        <Text ml={'4'} color={colorMode === 'light' ? 'black' : 'white'}>
           Sign in with Google
         </Text>
       </Button>

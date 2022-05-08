@@ -4,6 +4,7 @@ import { useAuth, useSidebarContext } from '../contexts';
 import useCollection from '../hooks/useCollection';
 import { getOtherEmail } from '../util/getOtherEmail';
 import { useNavigate } from 'react-router-dom';
+
 import {
   Drawer,
   DrawerBody,
@@ -11,13 +12,14 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
+  useColorMode,
 } from '@chakra-ui/react';
 
 export const SideBar = () => {
   const {
     state: { user },
   } = useAuth();
-
+  const { colorMode } = useColorMode();
   const { documents } = useCollection('chats');
   const chats = documents;
   const navigate = useNavigate();
@@ -33,7 +35,10 @@ export const SideBar = () => {
           align="center"
           borderBottom="1px solid"
           borderColor="gray.200"
-          _hover={{ bg: 'gray.100', cursor: 'pointer' }}
+          _hover={{
+            bg: colorMode === 'light' ? 'gray.100' : 'gray.800',
+            cursor: 'pointer',
+          }}
           onClick={() => {
             navigate(`/chat/${chat.id}`);
             onClose();
@@ -60,7 +65,7 @@ export const SideBar = () => {
       >
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerCloseButton mt="4"/>
+          <DrawerCloseButton mt="4" />
           <DrawerHeader>
             <Flex align="center">
               <Avatar src={user?.photo} marginEnd={3} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
-import { Button, Box, Flex, Text, Badge } from '@chakra-ui/react';
+import { Button, Box, Flex, Text, Badge, useColorMode } from '@chakra-ui/react';
 import { ReferalAccordian } from './ReferalAccordian';
 import { useAuth, useJobContext } from '../contexts';
 import { deleteDoc, doc, getDocs, collection } from 'firebase/firestore';
@@ -40,6 +40,7 @@ const ReferalDetails = () => {
       });
     }
   }
+  const { colorMode } = useColorMode();
   return (
     <div>
       <Flex
@@ -70,7 +71,7 @@ const ReferalDetails = () => {
                 return (
                   <Box
                     width={'full'}
-                    bg="gray.100"
+                    bg={colorMode === 'light' ? 'gray.100' : 'gray.700'}
                     key={item}
                     borderBottom={'1px'}
                     py={{ base: '6', md: '10' }}
