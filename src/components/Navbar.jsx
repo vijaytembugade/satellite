@@ -93,6 +93,10 @@ export function Navbar() {
                     <NavLink to="/profile">Profile</NavLink>
                   </MenuItem>
                   <MenuDivider />
+                  <MenuItem>
+                    <NavLink to="/chat">Chat</NavLink>
+                  </MenuItem>
+                  <MenuDivider />
                   <MenuItem onClick={logout}>Logout</MenuItem>
                 </MenuList>
               </Menu>

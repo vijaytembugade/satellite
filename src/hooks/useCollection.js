@@ -9,7 +9,7 @@ const useCollection = (collection_name, uid) => {
     const collectionRef = collection(db, collection_name);
 
     getDocs(collectionRef).then(snapshot => {
-      const newData = snapshot.docs.map(doc => doc.data());
+      const newData = snapshot.docs.map(doc => ({id:doc.id,...doc.data()}));
       setDocuments(newData);
     });
   }, [collection_name, uid]);

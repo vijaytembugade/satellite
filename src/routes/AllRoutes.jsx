@@ -8,6 +8,8 @@ import {
   Homepage,
   JobReferalForm,
   Profile,
+  Chat,
+  ChatHome,
   JobDescription,
   ProfileShare,
 } from '../screens';
@@ -53,6 +55,22 @@ function AllRoutes() {
           }
         />
         <Route path="/auth" element={<Auth />} />
+        <Route
+          path="/chat"
+          element={
+            <RequireAuth>
+              <ChatHome />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/chat/:chatId"
+          element={
+            <RequireAuth>
+              <Chat />
+            </RequireAuth>
+          }
+        />
         <Route
           path="/profile"
           element={
