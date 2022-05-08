@@ -25,20 +25,27 @@ function ReferalAccordian({ id }) {
         const collectionRef = await doc(db, 'Jobs', id);
         const docSnap = await getDoc(collectionRef);
         console.log(docSnap.data());
+        const appliedByIds = docSnap.data()?.appliedBy;
 
         getDocs(collection(db, 'Users')).then(snapshot => {
           const newData = snapshot.docs.map(doc => ({
-            id: doc.id,
+            id: doc.data().uid,
             data: doc.data(),
           }));
 
-          setAplliedBYUser(newData);
+          console.log(newData);
+
+          setAplliedBYUser(
+            newData.filter(item => appliedByIds.includes(item.id))
+          );
         });
       } catch (error) {
         console.log(error);
       }
     })();
   }, [id]);
+
+  console.log(apliedByusers);
   return (
     <div>
       <Accordion
@@ -62,11 +69,11 @@ function ReferalAccordian({ id }) {
                 <Box borderBottom={'1px'} p={2} borderColor={'gray.300'}>
                   <Stack direction={'row'}>
                     <Text>User id:</Text>
-                    <Text fontWeight={'bold'}>{user.id}</Text>
+                    <Text fontWeight={'bold'}>{user?.id}</Text>
                   </Stack>
                   <Stack direction={'row'}>
                     <Text>User email</Text>
-                    <Text fontWeight={'bold'}>{user.data.email}</Text>
+                    <Text fontWeight={'bold'}>{user?.data?.email}</Text>
                   </Stack>
                   <Button colorScheme={'teal'}>See profile</Button>
                 </Box>
