@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Button, Box, Flex, Text, Badge } from '@chakra-ui/react';
 import { ReferalAccordian } from './ReferalAccordian';
 import { useAuth, useJobContext } from '../contexts';
@@ -74,7 +74,11 @@ const ReferalDetails = () => {
                       mt="4"
                     >
                       <Button colorScheme="blue">Delete Job</Button>
-                      <Button colorScheme="blue">Edit Job</Button>
+                      <Link to={`/referalForm/${item.id}`}>
+                        <Button colorScheme="blue" w="100%">
+                          Edit Job
+                        </Button>
+                      </Link>
                     </Flex>
                   </Box>
                 );
