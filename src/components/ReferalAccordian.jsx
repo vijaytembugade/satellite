@@ -13,7 +13,6 @@ function ReferalAccordian() {
   return (
     <div>
       <Accordion
-        defaultIndex={[0]}
         allowMultiple
         allowToggle
         my="2"

@@ -2,8 +2,6 @@ import { Badge, Box, Button, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
 import { useJobContext } from '../../contexts';
 
-const jobs = [1, 2, 3, 4, 5];
-
 const JobListing = () => {
   const { jobsData } = useJobContext();
   return (

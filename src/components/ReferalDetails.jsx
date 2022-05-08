@@ -1,10 +1,15 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Button, Box, Flex, Text, Badge } from '@chakra-ui/react';
 import { ReferalAccordian } from './ReferalAccordian';
-const jobs = [1, 2, 3, 4, 5];
+import { useAuth, useJobContext } from '../contexts';
 
 const ReferalDetails = () => {
+  const { jobsData } = useJobContext();
+  const {
+    state: { user },
+  } = useAuth();
+  const userReferedJobs = jobsData.filter(item => item.data.uid === user?.uid);
   return (
     <div>
       <Flex
@@ -12,6 +17,7 @@ const ReferalDetails = () => {
         alignItems="center"
         flexDirection="column"
         gap="4"
+        w="100%"
       >
         <Box>
           <NavLink to="/referalForm">
@@ -20,61 +26,66 @@ const ReferalDetails = () => {
             </Button>
           </NavLink>
         </Box>
-        <Box>
-          <Flex
-            p={{ base: '6', md: '50' }}
-            alignItems="flex-start"
-            justifyContent="flex-start"
-            direction="column"
-            gap={4}
-          >
-            {jobs.map(item => {
-              return (
-                <Box
-                  width={'full'}
-                  bg="gray.100"
-                  key={item}
-                  borderBottom={'1px'}
-                  py={{ base: '6', md: '10' }}
-                  px={{ base: '6', md: '16' }}
-                >
-                  <Text fontSize="3xl">Software Engineer</Text>
-                  <Text fontWeight={'bold'}>Company Name</Text>
-                  <Text>Job Description</Text>
-                  <Text noOfLines={3}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quas voluptatibus totam quibusdam, delectus veritatis
-                    officia sunt alias quo sequi dolore saepe hic in a omnis
-                    neque harum, tempora nesciunt repellendus!
-                  </Text>
-                  <Text>
-                    <Flex
-                      width={'100%'}
-                      gap={2}
-                      wrap={'wrap'}
-                      alignItems="center"
-                    >
-                      <Text fontWeight={'bold'}>Skills :</Text>
-                      <Badge colorScheme="blue">Javascript</Badge>
-                      <Badge colorScheme="blue">React</Badge>
-                      <Badge colorScheme="blue">NodeJS</Badge>
-                      <Badge colorScheme="blue">Ruby On Rails</Badge>
-                    </Flex>
-                  </Text>
-                  <ReferalAccordian />
-                  <Flex
-                    flexDirection={{ base: 'column', md: 'row' }}
-                    gap="4"
-                    mt="4"
+        {userReferedJobs.length !== 0 ? (
+          <Box w="100%">
+            <Flex
+              p={{ base: '6', md: '25' }}
+              alignItems="flex-start"
+              justifyContent="flex-start"
+              direction="column"
+              gap={4}
+              w="100%"
+            >
+              {userReferedJobs.map(item => {
+                return (
+                  <Box
+                    width={'full'}
+                    bg="gray.100"
+                    key={item}
+                    borderBottom={'1px'}
+                    py={{ base: '6', md: '10' }}
+                    px={{ base: '6', md: '16' }}
                   >
-                    <Button colorScheme="blue">Delete Job</Button>
-                    <Button colorScheme="blue">Edit Job</Button>
-                  </Flex>
-                </Box>
-              );
-            })}
-          </Flex>
-        </Box>
+                    <Text fontSize="3xl">{item.data.job_role}</Text>
+                    <Text fontWeight={'bold'}>{item.data.company_name}</Text>
+                    <Text>Job Description</Text>
+                    <Text noOfLines={3}>{item.data.job_description}</Text>
+                    <Text>
+                      <Flex
+                        width={'100%'}
+                        gap={2}
+                        wrap={'wrap'}
+                        alignItems="center"
+                      >
+                        <Text fontWeight={'bold'}>Skills :</Text>
+                        {item.data.skills.map(skill => {
+                          return (
+                            <Badge colorScheme="blue" key={skill}>
+                              {skill}
+                            </Badge>
+                          );
+                        })}
+                      </Flex>
+                    </Text>
+                    <ReferalAccordian />
+                    <Flex
+                      flexDirection={{ base: 'column', md: 'row' }}
+                      gap="4"
+                      mt="4"
+                    >
+                      <Button colorScheme="blue">Delete Job</Button>
+                      <Link to={`/referalForm/${item.id}`}>
+                        <Button colorScheme="blue" w="100%">
+                          Edit Job
+                        </Button>
+                      </Link>
+                    </Flex>
+                  </Box>
+                );
+              })}
+            </Flex>
+          </Box>
+        ) : null}
       </Flex>
     </div>
   );
