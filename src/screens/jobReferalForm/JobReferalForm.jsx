@@ -23,6 +23,7 @@ import {
   updateDoc,
 } from 'firebase/firestore';
 import { db } from '../../firebase/config';
+import { toast } from 'react-toastify';
 
 const options = [
   { value: 'Javscript', label: 'Javscript' },
@@ -127,8 +128,16 @@ function JobReferalForm() {
           setJobsData([...newData]);
         });
         navigate('/');
+        toast.success('Job added Successfully', {
+          position: 'bottom-right',
+          autoClose: 2000,
+        });
       } catch (e) {
         console.error('Error adding document: ', e);
+        toast.error('Error adding Job', {
+          position: 'bottom-right',
+          autoClose: 2000,
+        });
       }
     } else {
       try {
@@ -146,8 +155,16 @@ function JobReferalForm() {
           setJobsData([...newData]);
         });
         navigate('/');
+        toast.success('Job Updated Successfully', {
+          position: 'bottom-right',
+          autoClose: 2000,
+        });
       } catch (err) {
         console.error(err);
+        toast.error('Error Updating Job', {
+          position: 'bottom-right',
+          autoClose: 2000,
+        });
       }
     }
   }
