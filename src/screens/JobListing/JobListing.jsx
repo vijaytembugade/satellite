@@ -20,6 +20,7 @@ import {
   updateDoc,
 } from 'firebase/firestore';
 import { db } from '../../firebase/config';
+import { toast } from 'react-toastify';
 
 const JobListing = () => {
   const { jobsData } = useJobContext();
@@ -65,6 +66,10 @@ const JobListing = () => {
               payload: { data: doc.data(), profileId: doc.id },
             });
           });
+          toast.success('Request Sent', {
+            position: 'bottom-right',
+            autoClose: 2000,
+          });
         } else {
           throw new Error('Already applied for this job');
         }
@@ -78,6 +83,10 @@ const JobListing = () => {
         }
       } catch (err) {
         console.error(err);
+        toast.success(err.message, {
+          position: 'bottom-right',
+          autoClose: 2000,
+        });
       }
     }
   };
@@ -144,17 +153,19 @@ const JobListing = () => {
               >
                 {!profileData?.appliedJobs?.includes(item.id) ? (
                   <Button
-                    colorScheme="blue"
+                    colorScheme="purple"
                     onClick={() => handleAddForReferrals(item.id)}
                   >
                     Ask for referals
                   </Button>
                 ) : (
-                  <Button colorScheme="red">Already asked for refarral</Button>
+                  <Button colorScheme="purple">
+                    Already asked for refarral
+                  </Button>
                 )}
 
                 <Link to={`/jobDescription/${item.id}`}>
-                  <Button colorScheme="blue" w="100%">
+                  <Button colorScheme="gray" w="100%">
                     See More
                   </Button>
                 </Link>
