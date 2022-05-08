@@ -19,7 +19,7 @@ const Homepage = () => {
       <FeaturesGrid />
       <Box p="16">
         <Flex alignItems="center" justifyContent="center" gap="12" wrap="wrap">
-          {jobsData.map(job => {
+          {jobsData.slice(0, 4).map(job => {
             return <Card key={job.id} job={job} />;
           })}
         </Flex>
