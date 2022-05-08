@@ -106,14 +106,13 @@ export const ProfileDetails = ({ close }) => {
         updateDoc(collectionRef, { ...state });
 
         const unsb = onSnapshot(collectionRef, doc => {
-          console.log(doc.data());
           userDispatch({
             type: 'SET_PROFILE_DATA',
             payload: { data: doc.data(), profileId: doc.id },
           });
         });
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
       // const collectionRef = collection(db, 'Users');
       // const q = query(collectionRef, where('uid', '==', user?.uid));
