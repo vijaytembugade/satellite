@@ -18,8 +18,6 @@ const options = [
 ];
 
 function SkillsCreator({ skills, dispatch }) {
-  console.log(skills);
-
   return (
     <Box my="2">
       <Text htmlFor="skills" mt="2">
