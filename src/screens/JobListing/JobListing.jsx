@@ -3,6 +3,7 @@ import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
 import React from 'react';
 import { useAuth, useJobContext } from '../../contexts';
 import { db } from '../../firebase/config';
+import { Link } from 'react-router-dom';
 
 const JobListing = () => {
   const { jobsData } = useJobContext();
@@ -11,7 +12,6 @@ const JobListing = () => {
   } = useAuth();
 
   const handleAddForReferrals = async id => {
-    console.log(profileId);
     if (user) {
       try {
         const collectionRef = await doc(db, 'Users', profileId);
@@ -54,11 +54,11 @@ const JobListing = () => {
           return (
             <Box
               key={item.id}
-              width={'full'}
+              width="full"
               bg="gray.100"
               borderBottom={'1px'}
-              py={{ base: 6, md: 10 }}
-              px={{ base: 6, md: 16 }}
+              py={{ base: '6', md: '10' }}
+              px={{ base: '6', md: '16' }}
             >
               <Text fontWeight={'bold'}>{item.data.job_role}</Text>
               <Text>
@@ -68,7 +68,7 @@ const JobListing = () => {
               <Text noOfLines={3}>{item.data.job_description}</Text>
 
               <Text>
-                <Flex width={'100%'} gap={2} wrap={'wrap'} alignItems="center">
+                <Flex width="100%" gap="2" wrap={'wrap'} alignItems="center">
                   <Text fontWeight={'bold'}>Skills :</Text>
                   {item.data.skills.map(skill => {
                     return (
@@ -79,14 +79,24 @@ const JobListing = () => {
                   })}
                 </Flex>
               </Text>
-
-              <Button
-                mt={4}
-                colorScheme="blue"
-                onClick={() => handleAddForReferrals(item.id)}
+              <Flex
+                flexDirection={{ base: 'column', md: 'row' }}
+                gap="4"
+                mt="4"
+                w="100%"
               >
-                Ask for referals
-              </Button>
+                <Button
+                  colorScheme="blue"
+                  onClick={() => handleAddForReferrals(item.id)}
+                >
+                  Ask for referals
+                </Button>
+                <Link to={`/jobDescription/${item.id}`}>
+                  <Button colorScheme="blue" w="100%">
+                    See More
+                  </Button>
+                </Link>
+              </Flex>
             </Box>
           );
         })}
