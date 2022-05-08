@@ -1,6 +1,7 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { createContext, useContext, useEffect, useReducer } from 'react';
+import { toast } from 'react-toastify';
 import { auth, db } from '../firebase/config';
 
 const AuthContext = createContext();
@@ -47,8 +48,16 @@ const AuthProvider = ({ children }) => {
             photo: user?.photoURL,
           },
         });
+        toast.success('SignIn successfull', {
+          position: 'bottom-right',
+          autoClose: 2000,
+        });
       } else {
         dispatch({ type: 'LOGOUT' });
+        toast.success('Logout successfull', {
+          position: 'bottom-right',
+          autoClose: 2000,
+        });
       }
     });
 

@@ -151,7 +151,7 @@ export const Profile = () => {
             {!isDetails && (
               <Flex alignItems={'center'} justifyContent={'center'}>
                 <Button colorScheme="blue" onClick={() => setDetails(true)}>
-                  Add Details +
+                  Edit Details +
                 </Button>
               </Flex>
             )}

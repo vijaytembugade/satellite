@@ -169,7 +169,7 @@ export const UserDetails = () => {
         Social Links:
       </Text>
       <Flex justify="space-evenly" gap="15">
-        <a href={profileData.github} target="_blank" rel="noreferrer">
+        <a href={profileData?.github} target="_blank" rel="noreferrer">
           <Text
             fontSize="4xl"
             cursor="pointer"
@@ -179,17 +179,17 @@ export const UserDetails = () => {
             <i class="fa-brands fa-github"></i>
           </Text>
         </a>
-        <a href={profileData.linkedIn} target="_blank" rel="noreferrer">
+        <a href={profileData?.linkedIn} target="_blank" rel="noreferrer">
           <Text fontSize="4xl" cursor="pointer">
             <i class="fa-brands fa-linkedin"></i>
           </Text>
         </a>
-        <a href={profileData.peerlist} target="_blank" rel="noreferrer">
+        <a href={profileData?.peerlist} target="_blank" rel="noreferrer">
           <Text fontSize="4xl" cursor="pointer">
             <i class="fa-solid fa-p"></i>
           </Text>
         </a>
-        <a href={profileData.twitter} target="_blank" rel="noreferrer">
+        <a href={profileData?.twitter} target="_blank" rel="noreferrer">
           <Text fontSize="4xl" cursor="pointer">
             <i class="fa-brands fa-twitter"></i>
           </Text>

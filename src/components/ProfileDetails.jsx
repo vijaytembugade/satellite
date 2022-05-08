@@ -19,6 +19,7 @@ import {
   updateDoc,
 } from 'firebase/firestore';
 import { db } from '../firebase/config';
+import { toast } from 'react-toastify';
 const options = [
   { value: 'Javscript', label: 'Javscript' },
   { value: 'React', label: 'React' },
@@ -97,11 +98,17 @@ export const ProfileDetails = ({ close }) => {
         const docRef = await addDoc(collection(db, 'Users'), {
           ...state,
         });
-
-        console.log(docRef);
         close();
+        toast.success('Profile Added Successfully', {
+          position: 'bottom-right',
+          autoClose: 2000,
+        });
       } catch (e) {
         console.error('Error adding document: ', e);
+        toast.error('Error adding Profile', {
+          position: 'bottom-right',
+          autoClose: 2000,
+        });
       }
     } else {
       try {
@@ -115,8 +122,16 @@ export const ProfileDetails = ({ close }) => {
           });
         });
         close();
+        toast.success('Profile Updated Successfully', {
+          position: 'bottom-right',
+          autoClose: 2000,
+        });
       } catch (err) {
         console.error(err);
+        toast.error('Error Updating Profile', {
+          position: 'bottom-right',
+          autoClose: 2000,
+        });
       }
     }
   }
