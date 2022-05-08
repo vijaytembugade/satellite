@@ -1,4 +1,4 @@
-import { Button, Flex, Image, Text } from '@chakra-ui/react';
+import { Button, Center, Flex, Image, Text } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts';
@@ -19,24 +19,34 @@ export const Auth = () => {
 
   const { signInWithGoogle } = useGoogleLogin();
   return (
-    <Flex alignItems="center" justifyContent="center" mt="20rem" h="full">
+    <Flex
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      h="90vh"
+    >
       <Button
         onClick={signInWithGoogle}
         border={3}
         borderWidth="4"
         borderColor="blackAlpha.100"
-        p={8}
+        p={5}
       >
         <Image
           borderRadius="full"
-          boxSize="30px"
+          boxSize="20px"
           src="https://www.pikpng.com/pngl/b/44-442110_jpg-black-and-white-library-google-logo-png.png"
-          alt="Dan Abramov"
+          alt="Google"
         />
         <Text ml={'4'} color="black">
           Sign in with Google
         </Text>
       </Button>
+      <Image
+        src="/assets/svgs/business-deal.svg"
+        boxSize="80%"
+        w={{ base: '90%', sm: '80%', md: '50%', lg: '35%' }}
+      />
     </Flex>
   );
 };

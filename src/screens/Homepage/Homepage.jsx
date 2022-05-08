@@ -1,17 +1,26 @@
-import { Box, Flex } from '@chakra-ui/react';
 import React from 'react';
-import { Card, FeaturesHomepage, Footer } from '../../components';
-
-const card = [1, 2, 3, 4, 5];
+import { Box, Flex } from '@chakra-ui/react';
+import {
+  Card,
+  FeaturesGrid,
+  FeaturesHomepage,
+  Footer,
+  Hero,
+} from '../../components';
+import { useJobContext } from '../../contexts';
 
 const Homepage = () => {
+  const { jobsData } = useJobContext();
+
   return (
     <>
+      <Hero />
       <FeaturesHomepage />
+      <FeaturesGrid />
       <Box p="16">
         <Flex alignItems="center" justifyContent="center" gap="12" wrap="wrap">
-          {card.map(item => {
-            return <Card key={item} />;
+          {jobsData.map(job => {
+            return <Card key={job.id} job={job} />;
           })}
         </Flex>
       </Box>

@@ -8,10 +8,15 @@ import {
   ListIcon,
   Button,
   useColorModeValue,
+  Flex,
 } from '@chakra-ui/react';
-import { CheckIcon } from '@chakra-ui/icons';
+import { AtSignIcon, CheckIcon, InfoOutlineIcon } from '@chakra-ui/icons';
 
-export function Card() {
+export function Card({ job }) {
+  const {
+    data: { company_name, isRemote, job_role, skills, location },
+  } = job;
+
   return (
     <Center py={6}>
       <Box
@@ -32,17 +37,17 @@ export function Card() {
           <Text
             fontSize={'sm'}
             fontWeight={500}
-            bg={useColorModeValue('green.50', 'green.900')}
+            bg={useColorModeValue('purple.50', 'purple.900')}
             p={2}
             px={3}
-            color={'green.500'}
+            color={'purple.500'}
             rounded={'full'}
           >
-            Software Engineer
+            {job_role}
           </Text>
           <Stack direction={'row'} align={'center'} justify={'center'}>
             <Text fontSize={'3xl'} fontWeight={800}>
-              Mirraw
+              {company_name}
             </Text>
           </Stack>
         </Stack>
@@ -54,35 +59,28 @@ export function Card() {
           width="60"
         >
           <List spacing={3}>
+            {isRemote && (
+              <ListItem>
+                <ListIcon as={CheckIcon} color="green.400" />
+                Remote
+              </ListItem>
+            )}
             <ListItem>
-              <ListIcon as={CheckIcon} color="green.400" />
-              Remote
+              <Flex alignItems="center">
+                <ListIcon as={AtSignIcon} color="green.400" />
+                <Text noOfLines={1}>Location: {location}</Text>
+              </Flex>
             </ListItem>
             <ListItem>
-              <ListIcon as={CheckIcon} color="green.400" />
-              Experience : 2 + years
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckIcon} color="green.400" />
-              Skills : Javascript, react, ruby on rails
+              <Flex alignItems="center">
+                <ListIcon as={InfoOutlineIcon} color="green.400" />
+                <Text noOfLines={1}>Skills : {skills.join(', ')}</Text>
+              </Flex>
             </ListItem>
           </List>
 
-          <Button
-            mt={10}
-            w={'full'}
-            bg={'green.400'}
-            color={'white'}
-            rounded={'xl'}
-            boxShadow={'0 5px 20px 0px rgb(72 187 120 / 43%)'}
-            _hover={{
-              bg: 'blue.500',
-            }}
-            _focus={{
-              bg: 'blue.500',
-            }}
-          >
-            Contact for Referrals
+          <Button mt={10} w={'full'} colorScheme={'purple'}>
+            Ask for Referral
           </Button>
         </Box>
       </Box>

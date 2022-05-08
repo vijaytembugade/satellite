@@ -14,6 +14,7 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
+  Image,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { NavLink, Link as RouterLink } from 'react-router-dom';
@@ -21,7 +22,7 @@ import { useAuth } from '../contexts';
 import useLogout from '../hooks/useLogout';
 
 const Links = [
-  { route: 'home', title: 'Home' },
+  { route: '', title: 'Home' },
   { route: 'jobs', title: 'Jobs' },
   { route: 'referalForm', title: 'Referral' },
 ];
@@ -34,13 +35,12 @@ const NavLinkMain = ({ children }) => {
       rounded={'md'}
       _hover={{
         textDecoration: 'none',
-        bg: useColorModeValue('gray.200', 'gray.700'),
+        bg: useColorModeValue('purple.100', 'purple.500'),
       }}
       to={`/${children.route}`}
+      fontWeight="600"
     >
-      <NavLink to={`/${children.route}`}>
-        {`${children.title}`.toUpperCase()}
-      </NavLink>
+      <NavLink to={`/${children.route}`}>{children.title}</NavLink>
     </Link>
   );
 };
@@ -55,7 +55,7 @@ export function Navbar() {
 
   return (
     <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+      <Box bg={useColorModeValue('purple.50', 'purple.900')} px={4} py={1}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
@@ -65,7 +65,11 @@ export function Navbar() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Box>Logo</Box>
+            <Box>
+              <NavLink to="/">
+                <Image src="/assets/logos/logo-light.svg" h="3.25rem" />
+              </NavLink>
+            </Box>
             <HStack
               as={'nav'}
               spacing={4}
@@ -86,7 +90,11 @@ export function Navbar() {
                   cursor={'pointer'}
                   minW={0}
                 >
-                  <Avatar size={'sm'} src={user?.photo} />
+                  <Avatar
+                    size={'md'}
+                    name={user?.displayName}
+                    src={user?.photo}
+                  />
                 </MenuButton>
                 <MenuList>
                   <NavLink to="/profile">
@@ -107,8 +115,7 @@ export function Navbar() {
               <Button
                 as={'nav'}
                 spacing={4}
-                colorScheme={'green.400'}
-                bg={'green.400'}
+                colorScheme={'purple'}
                 cursor="pointer"
               >
                 Login
@@ -116,7 +123,6 @@ export function Navbar() {
             </RouterLink>
           )}
         </Flex>
-
         {isOpen ? (
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
