@@ -17,7 +17,7 @@ export const UserDetails = () => {
   const {
     state: { user, profileData },
   } = useAuth();
-  console.log(profileData);
+  
   return (
     <Box p={{ base: '2', md: '16' }}>
       <Stack my="4" direction={'row'}>
@@ -162,7 +162,7 @@ export const UserDetails = () => {
           </Flex>
         </Stat>
       </Flex>
-      {/*  */}
+     
       {/* Projects */}
       <Flex></Flex>
       <Text fontSize="3xl" fontWeight="bold">
