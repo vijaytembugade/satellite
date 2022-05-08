@@ -32,24 +32,18 @@ export function FeaturesGrid() {
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={20}>
         <Feature
           icon={<i class="fa-solid fa-envelope-open"></i>}
-          title={'Lifetime Support'}
-          text={
-            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
-          }
+          title={'Mail Access'}
+          text={'Access the emails arround interested folks.'}
         />
         <Feature
           icon={<i class="fa-solid fa-comment"></i>}
-          title={'Unlimited Donations'}
-          text={
-            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
-          }
+          title={'Chat communication'}
+          text={'Direct Communication platform'}
         />
         <Feature
           icon={<i class="fa-solid fa-user"></i>}
-          title={'Instant Delivery'}
-          text={
-            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
-          }
+          title={'Profile Distinguishing'}
+          text={'Build your profile accessible to everyone'}
         />
       </SimpleGrid>
     </Box>

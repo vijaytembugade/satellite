@@ -47,7 +47,7 @@ export const UserDetails = () => {
 
       <chakra.h1
         textAlign={'center'}
-        fontSize={{ base: '2xl', md: '3xl' }}
+        fontSize={{ base: '2xl', md: '2xl' }}
         py={10}
         fontWeight={'bold'}
       >
@@ -164,11 +164,10 @@ export const UserDetails = () => {
       </Flex>
       {/*  */}
       {/* Projects */}
-      <Flex></Flex>
-      <Text fontSize="3xl" fontWeight="bold">
-        Social Links:
+      <Text my="10px" textAlign="center" fontSize="2xl" fontWeight="bold">
+        Social Links
       </Text>
-      <Flex justify="space-evenly" gap="15">
+      <Flex justifyContent="center" gap="8">
         <a href={profileData?.github} target="_blank" rel="noreferrer">
           <Text
             fontSize="4xl"
