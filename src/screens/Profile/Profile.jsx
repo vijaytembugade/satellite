@@ -17,7 +17,7 @@ import {
 import { ProfileDetails, ReferalDetails, UserDetails } from '../../components';
 import { useState } from 'react';
 import { useAuth } from '../../contexts';
-import { Link as RouterLink} from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 export const Profile = () => {
   const {
@@ -68,10 +68,10 @@ export const Profile = () => {
               px={3}
               noOfLines="3"
             >
-              {profileData.about}
+              {profileData?.about}
             </Text>
             <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
-              {profileData.skills.slice(0, 4).map(skill => {
+              {profileData?.skills.slice(0, 4).map(skill => {
                 return (
                   <Badge px={2} py={1} fontWeight={'600'} key={skill}>
                     {skill}
@@ -88,7 +88,6 @@ export const Profile = () => {
               justifyContent={'space-between'}
               alignItems={'center'}
             >
-              
               <Button
                 flex={1}
                 fontSize={'sm'}
@@ -97,27 +96,25 @@ export const Profile = () => {
                   bg: 'gray.200',
                 }}
               >
-                <RouterLink to="/chat">
-              Start Chat
-              </RouterLink>
+                <RouterLink to="/chat">Start Chat</RouterLink>
               </Button>
-                <Button
-                  flex={1}
-                  fontSize={'sm'}
-                  rounded={'full'}
-                  bg={'purple.400'}
-                  color={'white'}
-                  _hover={{
-                    bg: 'purple.500',
-                  }}
-                  _focus={{
-                    bg: 'purple.500',
-                  }}
-                >
-                    <RouterLink to={`/share/profile/${user.uid}`}>
+              <Button
+                flex={1}
+                fontSize={'sm'}
+                rounded={'full'}
+                bg={'purple.400'}
+                color={'white'}
+                _hover={{
+                  bg: 'purple.500',
+                }}
+                _focus={{
+                  bg: 'purple.500',
+                }}
+              >
+                <RouterLink to={`/share/profile/${user.uid}`}>
                   Share Profile
-              </RouterLink>
-                </Button>
+                </RouterLink>
+              </Button>
             </Stack>
           </Stack>
         </Stack>
@@ -133,7 +130,7 @@ export const Profile = () => {
             {!isDetails && (
               <Flex alignItems={'center'} justifyContent={'center'}>
                 <Button colorScheme="purple" onClick={() => setDetails(true)}>
-                Edit Details +
+                  Edit Details +
                 </Button>
               </Flex>
             )}

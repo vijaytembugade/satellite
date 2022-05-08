@@ -3,7 +3,7 @@ import { Box, SimpleGrid, Icon, Text, Stack, Flex } from '@chakra-ui/react';
 
 const Feature = ({ title, text, icon }) => {
   return (
-    <Stack>
+    <Flex justifyContent="center" alignItems="center" flexDirection="column">
       <Flex
         w={16}
         h={16}
@@ -18,7 +18,7 @@ const Feature = ({ title, text, icon }) => {
       </Flex>
       <Text fontWeight={600}>{title}</Text>
       <Text color={'gray.600'}>{text}</Text>
-    </Stack>
+    </Flex>
   );
 };
 
@@ -33,7 +33,7 @@ export function FeaturesGrid() {
         <Feature
           icon={<i class="fa-solid fa-envelope-open"></i>}
           title={'Mail Access'}
-          text={'Access the emails arround interested folks.'}
+          text={'Access the emails of interested folks'}
         />
         <Feature
           icon={<i class="fa-solid fa-comment"></i>}

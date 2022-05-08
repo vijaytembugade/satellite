@@ -51,36 +51,38 @@ const JobListing = () => {
   const handleAddForReferrals = async id => {
     if (user) {
       try {
-        const collectionRef = await doc(db, 'Users', profileId);
+        console.log('hello');
+        if (profileData !== undefined && profileId !== undefined) {
+          console.log('Hello if');
+          const collectionRef = await doc(db, 'Users', profileId);
 
-        const docSnap = await getDoc(collectionRef);
-        // if (!docSnap.data().appliedJobs.includes(id)) {
-        await updateDoc(collectionRef, {
-          appliedJobs: arrayUnion(id),
-        });
-
-        await onSnapshot(doc(db, 'Users', profileId), doc => {
-          console.log(doc.data());
-          dispatch({
-            type: 'SET_PROFILE_DATA',
-            payload: { data: doc.data(), profileId: doc.id },
+          const docSnap = await getDoc(collectionRef);
+          await updateDoc(collectionRef, {
+            appliedJobs: arrayUnion(id),
           });
-        });
-        toast.success('Request Sent', {
-          position: 'bottom-right',
-          autoClose: 2000,
-        });
-        // } else {
-
-        // }
-
-        const jobCollectionRef = await doc(db, 'Jobs', id);
-        const docJobSnap = await getDoc(jobCollectionRef);
-        // if (!docJobSnap.data().appliedBy.includes(user.uid)) {
-        await updateDoc(jobCollectionRef, {
-          appliedBy: arrayUnion(user.uid),
-        });
-        // }
+          await onSnapshot(doc(db, 'Users', profileId), doc => {
+            console.log(doc.data());
+            dispatch({
+              type: 'SET_PROFILE_DATA',
+              payload: { data: doc.data(), profileId: doc.id },
+            });
+          });
+          toast.success('Request Sent', {
+            position: 'bottom-right',
+            autoClose: 2000,
+          });
+          const jobCollectionRef = await doc(db, 'Jobs', id);
+          const docJobSnap = await getDoc(jobCollectionRef);
+          if (!docJobSnap.data().appliedBy.includes(user?.uid)) {
+            await updateDoc(jobCollectionRef, {
+              appliedBy: arrayUnion(user?.uid),
+            });
+          }
+        } else {
+          throw new Error(
+            'You must complete your profile before applying for referrals'
+          );
+        }
       } catch (err) {
         console.error(err);
         toast.success(err.message, {

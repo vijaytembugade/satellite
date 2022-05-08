@@ -98,6 +98,13 @@ export const ProfileDetails = ({ close }) => {
         const docRef = await addDoc(collection(db, 'Users'), {
           ...state,
         });
+        const collectionRef = await doc(db, 'Users', docRef.id);
+        const unsb = onSnapshot(collectionRef, doc => {
+          userDispatch({
+            type: 'SET_PROFILE_DATA',
+            payload: { data: doc.data(), profileId: doc.id },
+          });
+        });
         close();
         toast.success('Profile Added Successfully', {
           position: 'bottom-right',
@@ -105,7 +112,7 @@ export const ProfileDetails = ({ close }) => {
         });
       } catch (e) {
         console.error('Error adding document: ', e);
-        toast.error('Error adding Profile', {
+        toast.error('Please fill all details', {
           position: 'bottom-right',
           autoClose: 2000,
         });
