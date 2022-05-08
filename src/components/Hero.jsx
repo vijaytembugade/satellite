@@ -24,9 +24,10 @@ export const Hero = () => {
           </Text>
         </Heading>
         <Text color={'gray.500'} maxW={'3xl'}>
-          Never miss a meeting. Never be late for one too. Keep track of your
-          meetings and receive smart reminders in appropriate times. Read your
-          smart “Daily Agenda” every morning.
+          Connecting with people arorund you to get know more about other
+          organizations, isn't it fascinating? What if you want ask for referral
+          in a particular organization?
+          <Text fontWeight="semibold">Every Answer is here!</Text>
         </Text>
         <Stack spacing={6} direction={'row'}>
           <Button

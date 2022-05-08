@@ -39,7 +39,7 @@ export function Footer() {
             <Box>
               <Logo color={useColorModeValue('gray.700', 'white')} />
             </Box>
-            <Text fontSize={'sm'}>© 2022 Aimergers .All rights reserved</Text>
+            <Text fontSize={'sm'}>© 2022 Aimergers. All rights reserved</Text>
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Company</ListHeader>
