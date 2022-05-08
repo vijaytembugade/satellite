@@ -89,9 +89,9 @@ export function Navbar() {
                   <Avatar size={'sm'} src={user?.photo} />
                 </MenuButton>
                 <MenuList>
-                  <MenuItem>
-                    <NavLink to="/profile">Profile</NavLink>
-                  </MenuItem>
+                  <NavLink to="/profile">
+                    <MenuItem>Profile</MenuItem>
+                  </NavLink>
                   <MenuDivider />
                   <MenuItem>
                     <NavLink to="/chat">Chat</NavLink>
