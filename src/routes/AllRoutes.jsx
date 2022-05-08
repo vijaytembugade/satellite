@@ -8,6 +8,7 @@ import {
   Homepage,
   JobReferalForm,
   Profile,
+  Chat,
 } from '../screens';
 
 function AllRoutes() {
@@ -23,6 +24,8 @@ function AllRoutes() {
         {/* Not needed Remove Later */}
         <Route path="/role" element={<Role />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/chat/:chatId" element={<Chat />} />
       </Routes>
     </div>
   );
