@@ -12,13 +12,20 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
-import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
+import {
+  arrayUnion,
+  doc,
+  getDoc,
+  onSnapshot,
+  updateDoc,
+} from 'firebase/firestore';
 import { db } from '../../firebase/config';
 
 const JobListing = () => {
   const { jobsData } = useJobContext();
   const {
-    state: { user, profileId },
+    state: { user, profileId, profileData },
+    dispatch,
   } = useAuth();
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -47,7 +54,17 @@ const JobListing = () => {
 
         const docSnap = await getDoc(collectionRef);
         if (!docSnap.data().appliedJobs.includes(id)) {
-          await updateDoc(collectionRef, { appliedJobs: arrayUnion(id) });
+          await updateDoc(collectionRef, {
+            appliedJobs: arrayUnion(id),
+          });
+
+          await onSnapshot(doc(db, 'Users', profileId), doc => {
+            console.log(doc.data());
+            dispatch({
+              type: 'SET_PROFILE_DATA',
+              payload: { data: doc.data(), profileId: doc.id },
+            });
+          });
         } else {
           throw new Error('Already applied for this job');
         }
@@ -125,12 +142,17 @@ const JobListing = () => {
                 mt="4"
                 w="100%"
               >
-                <Button
-                  colorScheme="blue"
-                  onClick={() => handleAddForReferrals(item.id)}
-                >
-                  Ask for referals
-                </Button>
+                {!profileData?.appliedJobs?.includes(item.id) ? (
+                  <Button
+                    colorScheme="blue"
+                    onClick={() => handleAddForReferrals(item.id)}
+                  >
+                    Ask for referals
+                  </Button>
+                ) : (
+                  <Button colorScheme="red">Already asked for refarral</Button>
+                )}
+
                 <Link to={`/jobDescription/${item.id}`}>
                   <Button colorScheme="blue" w="100%">
                     See More
