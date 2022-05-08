@@ -94,17 +94,22 @@ const ReferalDetails = () => {
                       gap="4"
                       mt="4"
                     >
+                      <Link to={`/jobDescription/${item.id}`}>
+                        <Button colorScheme="blue" w="100%">
+                          See More
+                        </Button>
+                      </Link>
+                      <Link to={`/referalForm/${item.id}`}>
+                        <Button colorScheme="blue" w="100%">
+                          Edit Job
+                        </Button>
+                      </Link>
                       <Button
                         colorScheme="blue"
                         onClick={e => deleteHandler(e, item.id)}
                       >
                         Delete Job
                       </Button>
-                      <Link to={`/referalForm/${item.id}`}>
-                        <Button colorScheme="blue" w="100%">
-                          Edit Job
-                        </Button>
-                      </Link>
                     </Flex>
                   </Box>
                 );
