@@ -17,7 +17,7 @@ const useLogin = () => {
         },
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

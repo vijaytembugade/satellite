@@ -22,7 +22,6 @@ function ReferalAccordian({ id }) {
       try {
         const collectionRef = await doc(db, 'Jobs', id);
         const docSnap = await getDoc(collectionRef);
-        console.log(docSnap.data());
         const appliedByIds = docSnap.data()?.appliedBy;
 
         getDocs(collection(db, 'Users')).then(snapshot => {
@@ -31,19 +30,16 @@ function ReferalAccordian({ id }) {
             data: doc.data(),
           }));
 
-          console.log(newData);
-
           setAplliedBYUser(
             newData.filter(item => appliedByIds.includes(item.id))
           );
         });
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     })();
   }, [id]);
 
-  console.log(apliedByusers);
   return (
     <div>
       <Accordion
