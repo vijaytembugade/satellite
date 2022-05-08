@@ -93,9 +93,9 @@ export function Navbar() {
                     <MenuItem>Profile</MenuItem>
                   </NavLink>
                   <MenuDivider />
-                  <MenuItem>
-                    <NavLink to="/chat">Chat</NavLink>
-                  </MenuItem>
+                  <NavLink to="/chat">
+                    <MenuItem>Chat</MenuItem>
+                  </NavLink>
                   <MenuDivider />
                   <MenuItem onClick={logout}>Logout</MenuItem>
                 </MenuList>
