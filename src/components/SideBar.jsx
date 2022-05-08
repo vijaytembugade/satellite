@@ -60,7 +60,7 @@ export const SideBar = () => {
       >
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerCloseButton />
+          <DrawerCloseButton mt="4"/>
           <DrawerHeader>
             <Flex align="center">
               <Avatar src={user?.photo} marginEnd={3} />
