@@ -92,11 +92,13 @@ export const ProfileDetails = ({ close }) => {
   const [state, dispatch] = useReducer(profileReducer, initialState);
 
   async function handleSubmit(e) {
-    if (profileData === undefined) {
+    if (profileData === undefined || profileData === null) {
       try {
         const docRef = await addDoc(collection(db, 'Users'), {
           ...state,
         });
+
+        console.log(docRef);
       } catch (e) {
         console.error('Error adding document: ', e);
       }
