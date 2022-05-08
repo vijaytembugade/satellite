@@ -8,15 +8,19 @@ import {
   AccordionButton,
   AccordionItem,
   Stack,
-  Button,
   Flex,
+  Button,
 } from '@chakra-ui/react';
 import { db } from '../firebase/config';
-import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
-import { Link } from 'react-router-dom';
+import { doc, getDoc, collection, getDocs, addDoc } from 'firebase/firestore';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts';
 
 function ReferalAccordian({ id }) {
   const [apliedByusers, setAplliedBYUser] = useState([]);
+  const {
+    state: { user },
+  } = useAuth();
 
   useEffect(() => {
     (async () => {
@@ -41,6 +45,15 @@ function ReferalAccordian({ id }) {
     })();
   }, [id]);
 
+  const navigate = useNavigate();
+
+  const newChat = async otherMail => {
+    const { id } = await addDoc(collection(db, 'chats'), {
+      users: [user.email, otherMail],
+    });
+    navigate(`/chat/${id}`);
+  };
+
   return (
     <div>
       <Accordion
@@ -61,12 +74,24 @@ function ReferalAccordian({ id }) {
           <AccordionPanel pb={4}>
             {apliedByusers?.map(user => {
               return (
-                <Box borderBottom={'1px'} p={2} borderColor={'purple.800'}>
+                <Box
+                  borderBottom={'1px'}
+                  p={2}
+                  borderColor={'purple.800'}
+                  key={user?.id}
+                >
                   <Stack direction={'row'}>
                     <Text>User email: </Text>
                     <Text fontWeight={'bold'}>{user?.data?.email}</Text>
                   </Stack>
+
                   <Flex gap={4} mt={4} wrap="wrap">
+                    <Button
+                      colorScheme={'teal'}
+                      onClick={() => newChat(user?.data?.email)}
+                    >
+                      Start Chat
+                    </Button>
                     <Link to={`/share/profile/${user?.id}`}>
                       <Button colorScheme={'blackAlpha'}>See profile</Button>
                     </Link>

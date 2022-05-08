@@ -5,7 +5,6 @@ import {
   Flex,
   Heading,
   Image,
-  Link,
   Stack,
   Tab,
   TabList,
@@ -18,6 +17,7 @@ import {
 import { ProfileDetails, ReferalDetails, UserDetails } from '../../components';
 import { useState } from 'react';
 import { useAuth } from '../../contexts';
+import { Link as RouterLink} from 'react-router-dom';
 
 export const Profile = () => {
   const {
@@ -66,38 +66,18 @@ export const Profile = () => {
               textAlign={'center'}
               color={useColorModeValue('gray.700', 'gray.400')}
               px={3}
+              noOfLines="3"
             >
-              Actress, musician, songwriter and artist. PM for work inquires or
-              <Link href={'#'} color={'blue.400'}>
-                #tag
-              </Link>
-              me in your posts
+              {profileData.about}
             </Text>
             <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
-              <Badge
-                px={2}
-                py={1}
-                bg={useColorModeValue('gray.50', 'gray.800')}
-                fontWeight={'400'}
-              >
-                #art
-              </Badge>
-              <Badge
-                px={2}
-                py={1}
-                bg={useColorModeValue('gray.50', 'gray.800')}
-                fontWeight={'400'}
-              >
-                #photography
-              </Badge>
-              <Badge
-                px={2}
-                py={1}
-                bg={useColorModeValue('gray.50', 'gray.800')}
-                fontWeight={'400'}
-              >
-                #music
-              </Badge>
+              {profileData.skills.slice(0, 4).map(skill => {
+                return (
+                  <Badge px={2} py={1} fontWeight={'600'} key={skill}>
+                    {skill}
+                  </Badge>
+                );
+              })}
             </Stack>
 
             <Stack
@@ -108,6 +88,7 @@ export const Profile = () => {
               justifyContent={'space-between'}
               alignItems={'center'}
             >
+              
               <Button
                 flex={1}
                 fontSize={'sm'}
@@ -116,26 +97,27 @@ export const Profile = () => {
                   bg: 'gray.200',
                 }}
               >
-                Message
+                <RouterLink to="/chat">
+              Start Chat
+              </RouterLink>
               </Button>
-              <Button
-                flex={1}
-                fontSize={'sm'}
-                rounded={'full'}
-                bg={'blue.400'}
-                color={'white'}
-                boxShadow={
-                  '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
-                }
-                _hover={{
-                  bg: 'blue.500',
-                }}
-                _focus={{
-                  bg: 'blue.500',
-                }}
-              >
-                Follow
-              </Button>
+                <Button
+                  flex={1}
+                  fontSize={'sm'}
+                  rounded={'full'}
+                  bg={'purple.400'}
+                  color={'white'}
+                  _hover={{
+                    bg: 'purple.500',
+                  }}
+                  _focus={{
+                    bg: 'purple.500',
+                  }}
+                >
+                    <RouterLink to={`/share/profile/${user.uid}`}>
+                  Share Profile
+              </RouterLink>
+                </Button>
             </Stack>
           </Stack>
         </Stack>
@@ -150,8 +132,8 @@ export const Profile = () => {
           <TabPanel>
             {!isDetails && (
               <Flex alignItems={'center'} justifyContent={'center'}>
-                <Button colorScheme="blue" onClick={() => setDetails(true)}>
-                  Edit Details +
+                <Button colorScheme="purple" onClick={() => setDetails(true)}>
+                Edit Details +
                 </Button>
               </Flex>
             )}
