@@ -44,18 +44,18 @@ export function Footer() {
           <Stack align={'flex-start'}>
             <ListHeader>Company</ListHeader>
             <Link to={'/jobs'}>Jobs</Link>
-            <Link to={'#'}>Blog</Link>
-            <Link to={'#'}>Contact us</Link>
-            <Link to={'#'}>Pricing</Link>
-            <Link to={'#'}>Testimonials</Link>
+            <Link to={'/referalForm'}>Referrals Form</Link>
+            <Link to={'/'}>Contact us</Link>
+            <Link to={'/'}>Pricing</Link>
+            <Link to={'/'}>Testimonials</Link>
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Support</ListHeader>
-            <Link to={'#'}>Help Center</Link>
-            <Link to={'#'}>Terms of Service</Link>
-            <Link to={'#'}>Legal</Link>
-            <Link to={'#'}>Privacy Policy</Link>
-            <Link to={'#'}>Satus</Link>
+            <Link to={'/'}>Help Center</Link>
+            <Link to={'/'}>Terms of Service</Link>
+            <Link to={'/'}>Legal</Link>
+            <Link to={'/'}>Privacy Policy</Link>
+            <Link to={'/'}>Satus</Link>
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Stay up to date</ListHeader>
