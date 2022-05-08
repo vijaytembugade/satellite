@@ -8,6 +8,7 @@ import {
   Homepage,
   JobReferalForm,
   Profile,
+  JobDescription,
 } from '../screens';
 
 function AllRoutes() {
@@ -33,6 +34,7 @@ function AllRoutes() {
             </RequireAuth>
           }
         />
+        <Route path="/jobDescription/:jobID" element={<JobDescription />} />
         <Route path="/jobs" element={<JobListing />} />
         <Route path="/auth" element={<Auth />} />
         <Route

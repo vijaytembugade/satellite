@@ -6,4 +6,4 @@ export { Role } from './Role/Role';
 export { Homepage } from './Homepage/Homepage';
 export { Profile } from './Profile/Profile';
 export { JobListing } from './JobListing/JobListing';
-
+export { JobDescription } from './jobDescription/JobDescription';

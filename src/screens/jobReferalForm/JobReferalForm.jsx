@@ -69,6 +69,7 @@ function JobReferalForm() {
     location: '',
     uid: user?.uid || '',
     skills: [],
+    appliedBy: [],
   };
   const jobReducer = (state, action) => {
     switch (action.type) {
@@ -134,7 +135,19 @@ function JobReferalForm() {
     } else {
       try {
         const collectionRef = await doc(db, 'Jobs', jobID);
-        updateDoc(collectionRef, { ...jobState });
+
+        // const {
+        //   company_name,
+        //   isRemote,
+        //   job_description,
+        //   job_role,
+        //   location,
+        //   uid,
+        //   skills,
+        // } = jobState;
+        updateDoc(collectionRef, {
+          ...jobState,
+        });
 
         const collectionRefJobs = collection(db, 'Jobs');
         getDocs(collectionRefJobs).then(snapshot => {

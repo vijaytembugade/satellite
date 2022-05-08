@@ -1,9 +1,43 @@
 import { Badge, Box, Button, Flex, Text } from '@chakra-ui/react';
+import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
 import React from 'react';
-import { useJobContext } from '../../contexts';
+import { useAuth, useJobContext } from '../../contexts';
+import { db } from '../../firebase/config';
 
 const JobListing = () => {
   const { jobsData } = useJobContext();
+  const {
+    state: { user, profileId },
+  } = useAuth();
+
+  const handleAddForReferrals = async id => {
+    console.log(profileId);
+    if (user) {
+      try {
+        const collectionRef = await doc(db, 'Users', profileId);
+        console.log(collectionRef);
+
+        const docSnap = await getDoc(collectionRef);
+        console.log(docSnap.data());
+        if (!docSnap.data().appliedJobs.includes(id)) {
+          await updateDoc(collectionRef, { appliedJobs: arrayUnion(id) });
+        } else {
+          throw new Error('Already applied for this job');
+        }
+
+        const jobCollectionRef = await doc(db, 'Jobs', id);
+        const docJobSnap = await getDoc(jobCollectionRef);
+        console.log(docJobSnap.data());
+        if (!docJobSnap.data().appliedBy.includes(user.uid)) {
+          await updateDoc(jobCollectionRef, {
+            appliedBy: arrayUnion(user.uid),
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
   return (
     <div>
       <Text textAlign={'center'} fontSize={'3xl'} fontWeight="bold" pt={6}>
@@ -46,7 +80,11 @@ const JobListing = () => {
                 </Flex>
               </Text>
 
-              <Button mt={4} colorScheme="blue">
+              <Button
+                mt={4}
+                colorScheme="blue"
+                onClick={() => handleAddForReferrals(item.id)}
+              >
                 Ask for referals
               </Button>
             </Box>
