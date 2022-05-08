@@ -11,15 +11,20 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import React from 'react';
+import { useAuth } from '../contexts';
 
 export const UserDetails = () => {
+  const {
+    state: { user, profileData },
+  } = useAuth();
+
   return (
     <Box p={{ base: '2', md: '16' }}>
       <Stack my="4" direction={'row'}>
         <Text fontSize="xl" fontWeight="bold">
           Full Name :
         </Text>
-        <Text fontSize="xl">Rushikesh Prashant Tarapure</Text>
+        <Text fontSize="xl">{user?.name}</Text>
       </Stack>
       <Stack my="4" direction={'row'}>
         <Text fontSize="xl" fontWeight="bold">
@@ -31,29 +36,19 @@ export const UserDetails = () => {
         <Text fontSize="xl" fontWeight="bold">
           About Myself :
         </Text>{' '}
-        <Text fontSize="xl">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia nisi
-          consectetur optio doloribus accusantium aliquid vel placeat commodi a,
-          voluptate autem pariatur sapiente perferendis nesciunt blanditiis.
-          Consequatur perferendis vitae adipisci?{' '}
-        </Text>
+        <Text fontSize="xl">{profileData?.about}</Text>
       </Box>
       <Flex gap="4" wrap={'wrap'}>
         <Text fontSize="xl" fontWeight="bold">
           Skills :
         </Text>
-        <Badge fontSize="0.8em" p="1.5">
-          React
-        </Badge>
-        <Badge fontSize="0.8em" p="1.5">
-          Javascript
-        </Badge>
-        <Badge fontSize="0.8em" p="1.5">
-          CSS
-        </Badge>
-        <Badge fontSize="0.8em" p="1.5">
-          HTML
-        </Badge>
+        {profileData?.skills.map(item => {
+          return (
+            <Badge fontSize="0.8em" p="1.5">
+              {item}
+            </Badge>
+          );
+        })}
       </Flex>
       {/*  */}
       <chakra.h1
@@ -77,7 +72,9 @@ export const UserDetails = () => {
           <Flex justifyContent={'space-between'}>
             <Box pl={{ base: 2, md: 4 }}>
               <StatLabel fontWeight={'medium'} isTruncated>
-                First Project Name
+                <a href={`${profileData?.projects?.first}`}>
+                  First Project Name
+                </a>
               </StatLabel>
             </Box>
             <Box
@@ -101,7 +98,9 @@ export const UserDetails = () => {
           <Flex justifyContent={'space-between'}>
             <Box pl={{ base: 2, md: 4 }}>
               <StatLabel fontWeight={'medium'} isTruncated>
-                First Project Name
+                <a href={`${profileData?.projects?.second}`}>
+                  Second Project Name
+                </a>
               </StatLabel>
             </Box>
             <Box
@@ -125,7 +124,9 @@ export const UserDetails = () => {
           <Flex justifyContent={'space-between'}>
             <Box pl={{ base: 2, md: 4 }}>
               <StatLabel fontWeight={'medium'} isTruncated>
-                First Project Name
+                <a href={`${profileData?.projects?.third}`}>
+                  Third Project Name
+                </a>
               </StatLabel>
             </Box>
             <Box

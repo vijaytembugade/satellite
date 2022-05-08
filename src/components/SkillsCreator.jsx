@@ -1,5 +1,5 @@
-import { Box, FormLabel } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import { Box, Text } from '@chakra-ui/react';
+import React from 'react';
 import Creatable from 'react-select/creatable';
 
 const options = [
@@ -17,17 +17,29 @@ const options = [
   { value: 'Git', label: 'Git' },
 ];
 
-function SkillsCreator() {
-  const [selectedOption, setSelectedOption] = useState([]);
+function SkillsCreator({ skills, dispatch }) {
+  console.log(skills);
 
   return (
     <Box my="2">
-      <FormLabel htmlFor="skills" mt="2">
+      <Text htmlFor="skills" mt="2">
         Please Select the Skills required
-      </FormLabel>
+      </Text>
       <Creatable
-        defaultValue={selectedOption}
-        onChange={setSelectedOption}
+        defaultValue={
+          skills?.length > 0
+            ? skills?.map(value => ({
+                value: value,
+                label: value,
+              }))
+            : []
+        }
+        onChange={value =>
+          dispatch({
+            type: 'SET_SKILLS',
+            payload: value.map(item => item.value),
+          })
+        }
         options={options}
         isMulti={true}
         placeholder="Skills..."

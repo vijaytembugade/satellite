@@ -21,7 +21,7 @@ import { useAuth } from '../../contexts';
 
 export const Profile = () => {
   const {
-    state: { user },
+    state: { user, profileData },
   } = useAuth();
 
   const cancelHandler = () => setDetails(false);
@@ -155,7 +155,7 @@ export const Profile = () => {
                 </Button>
               </Flex>
             )}
-            {!isDetails && <UserDetails />}
+            {!isDetails && <UserDetails profileData={profileData} />}
             {isDetails && <ProfileDetails close={cancelHandler} />}
           </TabPanel>
           <TabPanel>

@@ -19,6 +19,7 @@ function AllRoutes() {
         <Route path="/home" element={<Homepage />} />
         <Route path="/userProfile" element={<UserProfile />} />
         <Route path="/referalForm" element={<JobReferalForm />} />
+        <Route path="/referalForm/:jobID" element={<JobReferalForm />} />
         <Route path="/jobs" element={<JobListing />} />
         <Route path="/auth" element={<Auth />} />
         {/* Not needed Remove Later */}
