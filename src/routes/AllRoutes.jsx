@@ -42,7 +42,14 @@ function AllRoutes() {
             </RequireAuth>
           }
         />
-        <Route path="/jobs" element={<JobListing />} />
+        <Route
+          path="/jobs"
+          element={
+            <RequireAuth>
+              <JobListing />
+            </RequireAuth>
+          }
+        />
         <Route path="/auth" element={<Auth />} />
         <Route
           path="/profile"
