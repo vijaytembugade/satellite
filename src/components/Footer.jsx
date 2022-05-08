@@ -2,7 +2,6 @@ import { EmailIcon } from '@chakra-ui/icons';
 import {
   Box,
   Container,
-  Link,
   SimpleGrid,
   Stack,
   Text,
@@ -11,6 +10,7 @@ import {
   useColorModeValue,
   Image,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 const Logo = props => {
   return <Image src="/assets/logos/logo-light.svg" w="60%" />;
@@ -43,19 +43,19 @@ export function Footer() {
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Company</ListHeader>
-            <Link href={'#'}>About us</Link>
-            <Link href={'#'}>Blog</Link>
-            <Link href={'#'}>Contact us</Link>
-            <Link href={'#'}>Pricing</Link>
-            <Link href={'#'}>Testimonials</Link>
+            <Link to={'/jobs'}>Jobs</Link>
+            <Link to={'/referalForm'}>Referrals Form</Link>
+            <Link to={'/'}>Contact us</Link>
+            <Link to={'/'}>Pricing</Link>
+            <Link to={'/'}>Testimonials</Link>
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Support</ListHeader>
-            <Link href={'#'}>Help Center</Link>
-            <Link href={'#'}>Terms of Service</Link>
-            <Link href={'#'}>Legal</Link>
-            <Link href={'#'}>Privacy Policy</Link>
-            <Link href={'#'}>Satus</Link>
+            <Link to={'/'}>Help Center</Link>
+            <Link to={'/'}>Terms of Service</Link>
+            <Link to={'/'}>Legal</Link>
+            <Link to={'/'}>Privacy Policy</Link>
+            <Link to={'/'}>Satus</Link>
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Stay up to date</ListHeader>

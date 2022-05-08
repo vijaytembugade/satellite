@@ -24,10 +24,11 @@ export const Hero = () => {
           </Text>
         </Heading>
         <Text color={'gray.500'} maxW={'3xl'}>
-          Connecting with people arorund you to get know more about other
-          organizations, isn't it fascinating? What if you want ask for referral
-          in a particular organization?
-          <Text fontWeight="semibold">Every Answer is here!</Text>
+          Launch a satellite 🛰️ of your own to form a network that spreads all
+          over the world. Be a part of our community, a community that is
+          helping many dreamers achieve their dream job via strong referrals.
+          Find someone who can help you find your dream job or help someone by
+          referring them for their dream job.
         </Text>
         <Stack spacing={6} direction={'row'}>
           <Button

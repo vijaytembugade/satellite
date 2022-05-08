@@ -54,33 +54,33 @@ const JobListing = () => {
         const collectionRef = await doc(db, 'Users', profileId);
 
         const docSnap = await getDoc(collectionRef);
-        if (!docSnap.data().appliedJobs.includes(id)) {
-          await updateDoc(collectionRef, {
-            appliedJobs: arrayUnion(id),
-          });
+        // if (!docSnap.data().appliedJobs.includes(id)) {
+        await updateDoc(collectionRef, {
+          appliedJobs: arrayUnion(id),
+        });
 
-          await onSnapshot(doc(db, 'Users', profileId), doc => {
-            console.log(doc.data());
-            dispatch({
-              type: 'SET_PROFILE_DATA',
-              payload: { data: doc.data(), profileId: doc.id },
-            });
+        await onSnapshot(doc(db, 'Users', profileId), doc => {
+          console.log(doc.data());
+          dispatch({
+            type: 'SET_PROFILE_DATA',
+            payload: { data: doc.data(), profileId: doc.id },
           });
-          toast.success('Request Sent', {
-            position: 'bottom-right',
-            autoClose: 2000,
-          });
-        } else {
-          throw new Error('Already applied for this job');
-        }
+        });
+        toast.success('Request Sent', {
+          position: 'bottom-right',
+          autoClose: 2000,
+        });
+        // } else {
+
+        // }
 
         const jobCollectionRef = await doc(db, 'Jobs', id);
         const docJobSnap = await getDoc(jobCollectionRef);
-        if (!docJobSnap.data().appliedBy.includes(user.uid)) {
-          await updateDoc(jobCollectionRef, {
-            appliedBy: arrayUnion(user.uid),
-          });
-        }
+        // if (!docJobSnap.data().appliedBy.includes(user.uid)) {
+        await updateDoc(jobCollectionRef, {
+          appliedBy: arrayUnion(user.uid),
+        });
+        // }
       } catch (err) {
         console.error(err);
         toast.success(err.message, {
@@ -156,11 +156,11 @@ const JobListing = () => {
                     colorScheme="purple"
                     onClick={() => handleAddForReferrals(item.id)}
                   >
-                    Ask for referals
+                    Ask for Referral
                   </Button>
                 ) : (
-                  <Button colorScheme="purple">
-                    Already asked for refarral
+                  <Button isDisabled colorScheme="purple">
+                    Already asked for Referral
                   </Button>
                 )}
 
