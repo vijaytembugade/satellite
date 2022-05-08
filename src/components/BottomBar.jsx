@@ -20,42 +20,39 @@ export const BottomBar = ({ id, user }) => {
     }
     setInput('');
   };
-  // const [emoji,setEmoji] = useState("");
 
   const onEmojiClick = async (event, emojiObject) => {
-    // setInput(emojiObject.emoji)
-    settoggle(false)
+    settoggle(false);
     await addDoc(collection(db, `chats/${id}/messages`), {
       text: emojiObject.emoji,
       sender: user.email,
       timeAt: serverTimestamp(),
     });
-   
-    // sendEmoji()
   };
 
   return (
     <FormControl p={3} onSubmit={sendMessage} as="form">
-      <Flex style={{ position: 'relative'}}>
+      <Flex style={{ position: 'relative' }}>
         <Input
           placeholder="Type a message..."
           autoComplete="off"
           onChange={e => setInput(e.target.value)}
           value={input}
         />
-        <div style={{ position: 'absolute', bottom: '4rem',right:"1rem" }}>
+        <div style={{ position: 'absolute', bottom: '4rem', right: '1rem' }}>
           {toggle && (
             <EmojiPicker
               style={{ overflowX: 'hidden' }}
               onEmojiClick={onEmojiClick}
               disableAutoFocus={true}
-              // skinTone={SKIN_TONE_MEDIUM_DARK}
               groupNames={{ smileys_people: 'PEOPLE' }}
               native
             />
           )}
         </div>
-        <button onClick={() => settoggle(prev => !prev)}>😀</button>
+        <button type="button" onClick={() => settoggle(prev => !prev)}>
+          😀
+        </button>
         <Button type="submit">
           <ArrowRightIcon />
         </Button>
